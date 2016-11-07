@@ -10,8 +10,8 @@ var methodOverride = require('method-override');
 //configuration
 
 //config files
-
-var db = require('./config/db');
+//require file with real credentials
+var db = require('/4Kursas/db_real_credentials'); 
 
 //port set up
 var port = process.env.PORT || 8080;
