@@ -44,7 +44,7 @@ require('./app/routes')(app); //configure routes
 app.listen(port);
 
 //checking
-concole.log('Prisijunges prie port\'o: ' + port);
+console.log('Prisijunges prie port\'o: ' + port);
 
 //expose appexports = module.exports = app
 
