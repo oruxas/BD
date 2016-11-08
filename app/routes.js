@@ -1,6 +1,6 @@
 // grab the model
 
-var workoutPlan = require('./models/workoutPlan');
+var workoutPlna = require('./models/workoutPlan');
 
     module.exports = function(app){
         //server routes 
@@ -31,5 +31,5 @@ var workoutPlan = require('./models/workoutPlan');
         app.get('*', function(req, res){
             res.sendfile('./public/views/index.html'); //loads public/index.html file
         });
-        
+
     };

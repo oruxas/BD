@@ -11,7 +11,7 @@ var methodOverride = require('method-override');
 
 //config files
 //require file with real credentials
-var db = require('/4Kursas/db_real_credentials'); 
+var db = require('./config/db'); 
 
 //port set up
 var port = process.env.PORT || 8080;
@@ -36,7 +36,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
 //ROUTES ===========================================================================
-require('./app.routes')(app); //configure routes
+require('./app/routes')(app); //configure routes
 
 //START APP ========================================================================
 
