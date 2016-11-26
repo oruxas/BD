@@ -6,6 +6,8 @@ var express = require('express');
 var app = express();
 var bodyParser =  require('body-parser');
 var methodOverride = require('method-override');
+var mongoose = require('mongoose');
+
 
 //configuration
 
@@ -13,11 +15,66 @@ var methodOverride = require('method-override');
 //require file with real credentials
 var db = require('./config/db'); 
 
+//db.createCollection('workoutPlansCollection');
+
+//grab model
+var WorkoutPlan = require('./app/models/workoutPlan');
+
+//create new model 
+var newWorkoutPlan = WorkoutPlan({
+    userId : 1,
+        userEmail : "evaldaskal@gmail.com",
+        userPassword : "admin123",
+            workoutType : {
+                bodyweight: {   totalDuration : 3, 
+                                daysPerWeek : 3, 
+                                bodyPart : "chest", 
+                                selectedExercise : "pushups", 
+                                sets : 5, 
+                                reps : 15,
+                                restTime : 3
+                            }/*,
+                weights: [     {totalDuration : 3}, 
+                                {daysPerWeek :3}, 
+                                {bodyPart : "chest"}, 
+                                {selectedExercise : "pushups"}, 
+                                {sets : 5}, 
+                                {reps : 15},
+                                {restTime : 3}
+                            ],
+                mixed: [        {totalDuration : 3}, 
+                                {daysPerWeek :3}, 
+                                {bodyPart : "chest"}, 
+                                {selectedExercise : "pushups"}, 
+                                {sets : 5}, 
+                                {reps : 15},
+                                {restTime : 3}
+                            ]*/
+            }
+});
+
 //port set up
 var port = process.env.PORT || 8080;
 
 //uncomment after entering credentials in config/db.js
-//mongoose.connect(db.url);
+mongoose.connect(db.url);
+console.log('Prisijungta prie db!');
+
+//save workoutPlan:
+newWorkoutPlan.save(function(err){
+    if(err) throw err;
+    console.log('Workout Plan Created!');
+
+        //find and console.log all plans, cuz of asynch behavior
+        WorkoutPlan.find({}, function(err, workoutPlans){
+            if (err) throw err;
+
+            console.log(JSON.stringify(workoutPlans));
+        });
+
+});
+
+
 
 //get all data/stuff of the body (POST) parameters
 //parse application/json

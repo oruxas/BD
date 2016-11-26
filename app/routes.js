@@ -1,6 +1,6 @@
 // grab the model
 
-var workoutPlna = require('./models/workoutPlan');
+var workoutPlan = require('./models/workoutPlan');
 
     module.exports = function(app){
         //server routes 
@@ -17,6 +17,8 @@ var workoutPlna = require('./models/workoutPlan');
                     res.send(err);
                 } else {
                     res.json(workoutPlans);
+                    console.log(JSON.stringify(workoutPlans));
+
                 }
 
             }); //end workoutPlan.find
