@@ -1,2 +1,2 @@
 // public/js/app.js
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainController', 'ExampleController', 'ExampleService']);
+angular.module('workoutPlansApp', ['ngRoute', 'appRoutes', 'MainController', 'WorkoutPlansController', 'WorkoutPlansService', 'ui.bootstrap']);

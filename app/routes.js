@@ -1,6 +1,6 @@
 // grab the model
 
-var workoutPlan = require('./models/workoutPlan');
+var WorkoutPlan = require('./models/workoutPlan');
 
     module.exports = function(app){
         //server routes 
@@ -11,13 +11,13 @@ var workoutPlan = require('./models/workoutPlan');
         //sample routes
         app.get('/api/workoutPlans', function(req, res){
             // using mongoose to get all plans in the db:
-            workoutPlan.find(function(err, workoutPlans){
+            WorkoutPlan.find(function(err, workoutPlans){
                 //check for errors, nothing after res.send(err) gets executed
                 if (err) {             
                     res.send(err);
                 } else {
                     res.json(workoutPlans);
-                    console.log(JSON.stringify(workoutPlans));
+                    
 
                 }
 
@@ -31,7 +31,9 @@ var workoutPlan = require('./models/workoutPlan');
         
         //route to handle all angular requests
         app.get('*', function(req, res){
-            res.sendfile('./public/views/index.html'); //loads public/index.html file
+            res.sendfile('./public/views/index.html'); //loads public/index.html file , required for other routes caching
         });
+
+        
 
     };

@@ -25,6 +25,7 @@ var newWorkoutPlan = WorkoutPlan({
     userId : 1,
         userEmail : "evaldaskal@gmail.com",
         userPassword : "admin123",
+        workoutPlanTitle : "testPlan",
             workoutType : {
                 bodyweight: {   totalDuration : 3, 
                                 daysPerWeek : 3, 
@@ -34,23 +35,23 @@ var newWorkoutPlan = WorkoutPlan({
                                 reps : 15,
                                 restTime : 3
                             }/*,
-                weights: [     {totalDuration : 3}, 
-                                {daysPerWeek :3}, 
-                                {bodyPart : "chest"}, 
-                                {selectedExercise : "pushups"}, 
-                                {sets : 5}, 
-                                {reps : 15},
-                                {restTime : 3}
-                            ],
-                mixed: [        {totalDuration : 3}, 
-                                {daysPerWeek :3}, 
-                                {bodyPart : "chest"}, 
-                                {selectedExercise : "pushups"}, 
-                                {sets : 5}, 
-                                {reps : 15},
-                                {restTime : 3}
-                            ]*/
-            }
+                weights: {      totalDuration : 3, 
+                                daysPerWeek : 3, 
+                                bodyPart : "chest", 
+                                selectedExercise : "pushups", 
+                                sets : 5, 
+                                reps : 15,
+                                restTime : 3
+                            },
+                mixed: {        totalDuration : 3, 
+                                daysPerWeek : 3, 
+                                bodyPart : "chest", 
+                                selectedExercise : "pushups", 
+                                sets : 5, 
+                                reps : 15,
+                                restTime : 3
+                            }*/
+            } //end workoutType
 });
 
 //port set up
@@ -61,7 +62,7 @@ mongoose.connect(db.url);
 console.log('Prisijungta prie db!');
 
 //save workoutPlan:
-newWorkoutPlan.save(function(err){
+/*newWorkoutPlan.save(function(err){
     if(err) throw err;
     console.log('Workout Plan Created!');
 
@@ -72,7 +73,12 @@ newWorkoutPlan.save(function(err){
             console.log(JSON.stringify(workoutPlans));
         });
 
-});
+});*/
+WorkoutPlan.find({}, function(err, workoutPlans){
+            if (err) throw err;
+
+            console.log(JSON.stringify(workoutPlans));
+        });
 
 
 

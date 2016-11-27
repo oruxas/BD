@@ -15,6 +15,7 @@ var workoutPlan = new Schema(
         userId : {type : Number},
         userEmail : {type : String, required : true},
         userPassword : {type : String, required : true},
+        workoutPlanTitle : {type : String, required : true},
             workoutType : {
                 bodyweight: {   totalDuration : Number, 
                                 daysPerWeek : Number, 

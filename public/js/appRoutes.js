@@ -13,7 +13,7 @@ angular.module('appRoutes', [])
         //workoutPlans page that'll use example controller
         .when('/workoutPlans', {
             templateUrl: 'views/workoutPlans.html',
-            controller: 'ExampleController' 
+            controller: 'WorkoutPlansController' 
         
         });
 

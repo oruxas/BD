@@ -1,6 +1,7 @@
-angular.module('ExampleService', [])
-        .factory('Example', ['$http', function($http){
+angular.module('WorkoutPlansService', [])
+        .factory('WorkoutPlansFactory', ['$http', function($http){
             
+            //interface
             return {
                     // call to get all workout Plans
                     get : function(){

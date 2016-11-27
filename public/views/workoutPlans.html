@@ -1,0 +1,11 @@
+<!-- public/views/example.html -->
+
+<div class="jumbotron text-center" ng-controller="WorkoutPlansController">
+    <h1>This is example</h1>
+
+    <p>{{ tagline }}</p>
+
+    <ul ng-model="workoutPlans">
+        <li ng-repeat="workoutPlan in workoutPlans"> {{ workoutPlan.workoutPlanTitle }}</li>
+    </ul>
+</div>
