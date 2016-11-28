@@ -15,6 +15,11 @@ angular.module('appRoutes', [])
             templateUrl: 'views/workoutPlans.html',
             controller: 'WorkoutPlansController' 
         
+        })
+        .when('/createPlan', {
+            templateUrl: 'views/createPlan.html',
+            controller: 'CreatePlanController' 
+        
         });
 
         $locationProvider.html5Mode(true);

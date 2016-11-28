@@ -1,4 +1,4 @@
-<!-- public/views/example.html -->
+<!-- public/views/workoutPlans.html -->
 
 <div class="jumbotron text-center" ng-controller="WorkoutPlansController">
     <h1>This is example</h1>
@@ -6,6 +6,17 @@
     <p>{{ tagline }}</p>
 
     <ul ng-model="workoutPlans">
-        <li ng-repeat="workoutPlan in workoutPlans"> {{ workoutPlan.workoutPlanTitle }}</li>
+        <li ng-repeat="workoutPlan in workoutPlans"> 
+
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default" heading="{{ workoutPlan.workoutPlanTitle }}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    {{workoutPlans}}
+                </div>  
+            </uib-accordion>
+
+        </li>
     </ul>
+
+ 
+
 </div>
