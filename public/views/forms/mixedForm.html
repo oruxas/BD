@@ -1,0 +1,50 @@
+<form novalidate class="form-group">
+    <h3>This is temp for MIXED</h3>
+    <label>Workout Plan Title: <input type="text" ng-model="workoutPlan.title" /></label><br />
+    <div class="form-group">
+            <label>Total workout length: <input type="text" ng-model="workoutPlan.mixed.totalLength" /></label><br />
+        
+            <!--TODO: add date picker which disables not selected days and sets them as rest days-->
+            <label>Select days to train: <input type="text" ng-model="workoutPlan.mixed.trainDays" /></label><br />
+            
+            <label>Select Body Part to train: <input type="text" ng-model="workoutPlan.mixed.bodyPart" /></label><br />
+
+            <!--TODO: add list with available exercises + add exercise functionality -->
+            <label>Select Exercises: <input type="text" ng-model="workoutPlan.mixed.exercises" /></label> <br />
+            <button class="btn btn-info" data-toggle="modal" data-target="#myModal">ADD YOUR EXERCISE</button><br />
+
+            <label>Select number of sets: <input type="text" ng-model="workoutPlan.mixed.sets" /></label><br />
+
+            <label>Select number of reps: <input type="text" ng-model="workoutPlan.mixed.reps" /></label><br />
+
+            <label>Select Rest time: <input type="text" ng-model="workoutPlan.mixed.restTime" /></label><br />
+
+
+    </div>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="update(workoutPlan)" value="Save"  ng-click="save()"/>
+</form>
+
+
+<!--MODAL CONTENT-->
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

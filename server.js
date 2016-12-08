@@ -21,7 +21,7 @@ var db = require('./config/db');
 var WorkoutPlan = require('./app/models/workoutPlan');
 
 //create new model 
-var newWorkoutPlan = WorkoutPlan({
+/*var newWorkoutPlan = WorkoutPlan({
     userId : 1,
         userEmail : "evaldaskal@gmail.com",
         userPassword : "admin123",
@@ -34,7 +34,7 @@ var newWorkoutPlan = WorkoutPlan({
                                 sets : 5, 
                                 reps : 15,
                                 restTime : 3
-                            }/*,
+                            },
                 weights: {      totalDuration : 3, 
                                 daysPerWeek : 3, 
                                 bodyPart : "chest", 
@@ -50,9 +50,9 @@ var newWorkoutPlan = WorkoutPlan({
                                 sets : 5, 
                                 reps : 15,
                                 restTime : 3
-                            }*/
+                            }
             } //end workoutType
-});
+});*/
 
 //port set up
 var port = process.env.PORT || 8080;
@@ -61,19 +61,21 @@ var port = process.env.PORT || 8080;
 mongoose.connect(db.url);
 console.log('Prisijungta prie db!');
 
+
+
 //save workoutPlan:
-/*newWorkoutPlan.save(function(err){
-    if(err) throw err;
-    console.log('Workout Plan Created!');
+// newWorkoutPlan.save(function(err){
+//     if(err) throw err;
+//     console.log('Workout Plan Created!');
 
-        //find and console.log all plans, cuz of asynch behavior
-        WorkoutPlan.find({}, function(err, workoutPlans){
-            if (err) throw err;
+//         //find and console.log all plans, cuz of asynch behavior
+//         WorkoutPlan.find({}, function(err, workoutPlans){
+//             if (err) throw err;
 
-            console.log(JSON.stringify(workoutPlans));
-        });
+//             console.log(JSON.stringify(workoutPlans));
+//         });
 
-});*/
+// });
 WorkoutPlan.find({}, function(err, workoutPlans){
             if (err) throw err;
 

@@ -1,7 +1,28 @@
 <!-- public/views/home.html -->
 
-<div class="jumbotron text-center">
-    <h1>Test homepage</h1>
+<div class="text-center">
+    <h1>Geriausi sporto planai</h1>
 
-    <p>{{ tagline }}</p>
+    <h4>Nerandi? <a href="/createPlan"> Spausk Čia  </a> ir susikurk savo! </h4>
+
 </div>
+
+<ul ng-model="workoutPlans">
+        <li ng-repeat="workoutPlan in workoutPlans"> 
+
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-primary" heading="{{ workoutPlan.workoutPlanTitle }}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                   <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
+                   <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
+                   <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
+                   <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
+                   <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises.title}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
+                   <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
+                   <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
+                   <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p>
+                </div>  
+            </uib-accordion>
+
+        </li>
+    </ul>
+
