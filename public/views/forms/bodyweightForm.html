@@ -1,29 +1,107 @@
 
-<form novalidate class="form-group">
-    <h3>This is temp for BODYWEIGHT</h3>
-    <label>Workout Plan Title: <input type="text" ng-model="workoutPlan.title" /></label><br />
-    <div class="form-group">
-            <label>Total workout length: <input type="text" ng-model="workoutPlan.bodyweight.totalLength" /></label><br />
-        
+<form novalidate class="form-group form-horizontal">
+    <h3>This is temp for WEIGHTS</h3>
+    
+      <div class="form-group row">
+        <label class="control-label customLabel col-md-4">ID: </label>
+        <div class="col-md-4">
+          <input type="number" class="form-control" ng-model="workoutPlan.userId" /><br />  
+        </div>
+        <div class="col-md-4"></div>
+      </div>  
+    
+    <div class="form-group row">
+        <label class="control-label customLabel col-md-4">email: </label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" ng-model="workoutPlan.email" /><br />
+        </div>
+        <div class="col-md-4">  </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label customLabel col-md-4">password: </label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" ng-model="workoutPlan.password" /><br />
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label customLabel col-md-4">Workout Plan Title: </label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" ng-model="workoutPlan.title" /><br />
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="form-group row">
+            <label class="control-label customLabel col-md-4">Total workout length: </label> 
+            <div class="col-md-4">
+              <input type="number" class="form-control" ng-model="workoutPlan.totalLength" /><br />
+            </div>
+            <div class="col-md-4"></div>  
+    </div>
+
+    <div class="form-group row">    
             <!--TODO: add date picker which disables not selected days and sets them as rest days-->
-            <label>Select days to train: <input type="text" ng-model="workoutPlan.bodyweight.trainDays" /></label><br />
-            
-            <label>Select Body Part to train: <input type="text" ng-model="workoutPlan.bodyweight.bodyPart" /></label><br />
+            <label class="control-label customLabel col-md-4">Select days to train: </label>
+            <div class="col-md-4">
+              <input type="number" class="form-control" ng-model="workoutPlan.trainDays" /><br />
+            </div>
+            <div class="col-md-4"></div>
+    </div>
 
+    <div class="form-group row">       
+            <label class="control-label customLabel col-md-4">Select Body Part to train: </label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" ng-model="workoutPlan.bodyPart" /><br />
+            </div>
+            <div class="col-md-4"></div>  
+    </div>
+
+    <div class="form-group row">        
             <!--TODO: add list with available exercises + add exercise functionality -->
-            <label>Select Exercises: <input type="text" ng-model="workoutPlan.bodyweight.exercises" /></label> <br />
-            <button class="btn btn-info" data-toggle="modal" data-target="#myModal">ADD YOUR EXERCISE</button><br />
+            <label class="control-label customLabel col-md-4">Select Exercises: </label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" ng-model="workoutPlan.exerciseTitle" /> <br />
+            <!--In form for submit only-->
+            <!--<label class="control-label customLabel">Select Exercises: <input type="text" class="form-control" ng-model="workoutPlan.weights.exercises.link" /></label> <br />
+            <label class="control-label customLabel">Select Exercises: <input type="text" class="form-control" ng-model="workoutPlan.weights.exercises.tags" /></label> <br />-->
+              <button class="btn btn-info" data-toggle="modal" data-target="#myModal">ADD YOUR EXERCISE</button><br />
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+    </div>
 
-            <label>Select number of sets: <input type="text" ng-model="workoutPlan.bodyweight.sets" /></label><br />
+    <div class="form-group row">  
+            <label class="control-label customLabel col-md-4">Select number of sets: </label>
+            <div class="col-md-4">
+              <input type="number" class="form-control" ng-model="workoutPlan.sets" /><br />
+            </div>
+            <div class="col-md-4"></div>
+    </div>
 
-            <label>Select number of reps: <input type="text" ng-model="workoutPlan.bodyweight.reps" /></label><br />
+    <div class="form-group row">
+      <label class="control-label customLabel col-md-4">Select number of reps: </label>
+      <div class="col-md-4">
+        <input type="number" class="form-control" ng-model="workoutPlan.reps" /><br />
+      </div>
+      <div class="col-md-4"></div>  
+  </div>
 
-            <label>Select Rest time: <input type="text" ng-model="workoutPlan.bodyweight.restTime" /></label><br />
+    <div class="form-group row">
+            <label class="control-label customLabel col-md-4">Select Rest time: </label>
+            <div class="col-md-4">
+              <input type="number" class="form-control" ng-model="workoutPlan.restTime" /><br />
+            </div>
+            <div class="col-md-4"></div>
+    </div>
 
 
     </div>
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="update(workoutPlan)" value="Save"  ng-click="save()"/>
+    <!--<input type="button" ng-click="reset()" value="Reset" />-->
+    <input type="submit" value="Save"  ng-click="save(workoutPlan)"/>
 </form>
 
 

@@ -7,6 +7,7 @@ var app = express();
 var bodyParser =  require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 
 //configuration
@@ -15,10 +16,16 @@ var mongoose = require('mongoose');
 //require file with real credentials
 var db = require('./config/db'); 
 
+
 //db.createCollection('workoutPlansCollection');
 
 //grab model
 var WorkoutPlan = require('./app/models/workoutPlan');
+var User = require('./app/models/user');
+var userConfig = require('./config/passport');
+
+
+
 
 //create new model 
 /*var newWorkoutPlan = WorkoutPlan({
@@ -100,8 +107,20 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 //set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
 
+//initialise Passport as express middleware
+app.use(passport.initialize());
+
 //ROUTES ===========================================================================
 require('./app/routes')(app); //configure routes
+
+//error handlers
+//  catch unauthorised errors
+app.use(function(err, req, res, next){
+    if (err.name ==="UnauthorizedError"){
+        res.status(401);
+        res.json({ "message" : err.name + ": " + err.message});
+    }
+});
 
 //START APP ========================================================================
 

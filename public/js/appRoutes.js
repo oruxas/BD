@@ -24,4 +24,5 @@ angular.module('appRoutes', [])
 
         $locationProvider.html5Mode(true);
 
-    }]);
+    }  
+    ]);

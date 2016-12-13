@@ -1,5 +1,5 @@
 angular.module('WorkoutPlansService', [])
-        .factory('WorkoutPlansFactory', ['$http', function($http){
+        .factory('WorkoutPlansFactory', ['$http' , function($http){
             
             //interface
             return {

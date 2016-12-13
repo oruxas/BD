@@ -1,10 +1,8 @@
-//app/models.wourkoutPlanModel.js
+//app/models.wourkoutPlan.js
 
 //get mongoose module
 var mongoose = require('mongoose');
 //define our models
-//module.exports allows to pass this to other files when called
-
 
 //Schema definition:
 var Schema = mongoose.Schema;
