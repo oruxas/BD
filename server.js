@@ -7,22 +7,29 @@ var app = express();
 var bodyParser =  require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
-var passport = require('passport');
 
+//latest usable for auth
+//var passport = require('passport');
+//var localStrategy = require('passport-local').Strategy;
+//var cookieParser = require('cookie-parser');
+//var session = require('express-session');
+
+var morgan = require('morgan');
+//var flash = require('connect-flash');
 
 //configuration
 
 //config files
 //require file with real credentials
-var db = require('./config/db'); 
+var db = require('./app/config/db'); 
 
 
 //db.createCollection('workoutPlansCollection');
 
 //grab model
 var WorkoutPlan = require('./app/models/workoutPlan');
-var User = require('./app/models/user');
-var userConfig = require('./config/passport');
+//var User = require('./app/models/user');
+//var userConfig = require('./config/passport');
 
 
 
@@ -90,37 +97,27 @@ WorkoutPlan.find({}, function(err, workoutPlans){
         });
 
 
+app.use(morgan('dev')); //log requests to console
 
 //get all data/stuff of the body (POST) parameters
 //parse application/json
 
 app.use(bodyParser.json());
 
+//specify your view folder and parse the engine to HTML
+app.use(express.static(__dirname + '/public'));
 //parse application/x-www-form-urlencencoded
-
 app.use(bodyParser.urlencoded({ extended: true}));
-
 
 //override with the X-HTTP-Methd-Override header in the request.  simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
 
-//set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
-
-//initialise Passport as express middleware
-app.use(passport.initialize());
+// [SH] Use the API routes when path starts with /api
+//app.use('/api', routesApi);
 
 //ROUTES ===========================================================================
-require('./app/routes')(app); //configure routes
+require('./app/routes')(app); //configure routes ; load routes and pass in app and fully configured passport
 
-//error handlers
-//  catch unauthorised errors
-app.use(function(err, req, res, next){
-    if (err.name ==="UnauthorizedError"){
-        res.status(401);
-        res.json({ "message" : err.name + ": " + err.message});
-    }
-});
 
 //START APP ========================================================================
 

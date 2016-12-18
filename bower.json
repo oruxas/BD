@@ -7,6 +7,7 @@
     "animate.css": "latest",
     "angular": "latest",
     "angular-route": "latest",
-    "angular-modal-service": "^0.10.1"
+    "angular-modal-service": "^0.10.1",
+    "angular-bootstrap": "^2.3.1"
   }
 }

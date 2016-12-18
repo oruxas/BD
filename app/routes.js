@@ -1,8 +1,16 @@
 // grab the model
 
 var WorkoutPlan = require('./models/workoutPlan');
-var User = require('../app/models/user');
+//var User = require('../app/models/user');
+
+var express = require('express');
+var router = express.Router();
 var jwt = require('express-jwt');
+var auth = jwt({
+  secret: 'MY_SECRET',
+  userProperty: 'payload'
+});
+
 
 
     module.exports = function(app){
@@ -70,13 +78,27 @@ var jwt = require('express-jwt');
 
         //authentication routes
 
+        var ctrlProfile = require('../app/controllers/profile');
+        var ctrlAuth = require('../app/controllers/authentication');
+
+        // profile
+       app.get('/api/profile', auth, ctrlProfile.profileRead);
+
+        // authentication
+        app.post('/api/register', ctrlAuth.register);
+        app.post('/api/login', ctrlAuth.login);
+
+        app.get('/api/logout', function(req, res){
+            req.logout();
+            req.session.destroy();
+            res.redirect("/");
+        });
+
+
         // frontend routes
         
         //route to handle all angular requests
         app.get('*', function(req, res){
             res.sendfile('./public/views/index.html'); //loads public/index.html file , required for other routes caching
         });
-
-        
-
     };
