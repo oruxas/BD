@@ -2,7 +2,7 @@
 
 var WorkoutPlan = require('./models/workoutPlan');
 //var User = require('../app/models/user');
-
+var passport = require('passport');
 var express = require('express');
 var router = express.Router();
 var jwt = require('express-jwt');
@@ -85,14 +85,10 @@ var auth = jwt({
        app.get('/api/profile', auth, ctrlProfile.profileRead);
 
         // authentication
-        app.post('/api/register', ctrlAuth.register);
+        app.post('/register', ctrlAuth.register);
         app.post('/api/login', ctrlAuth.login);
-
-        app.get('/api/logout', function(req, res){
-            req.logout();
-            req.session.destroy();
-            res.redirect("/");
-        });
+       app.get('/logout', ctrlAuth.logout);
+        
 
 
         // frontend routes
@@ -102,3 +98,4 @@ var auth = jwt({
             res.sendfile('./public/views/index.html'); //loads public/index.html file , required for other routes caching
         });
     };
+

@@ -35,10 +35,11 @@ angular.module('appRoutes', [])
         templateUrl: 'views/profile.html',
         controller: 'ProfileController',
         controllerAs: 'vm'
-      }).when('/logout', {
+      })
+      .when('/logout', {
         templateUrl: 'views/home.html',
-        controller: 'ProfileController',
-        controllerAs: 'vm'
+        controller: 'LogoutController'
+        
       });
        
 

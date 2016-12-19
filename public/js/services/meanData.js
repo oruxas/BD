@@ -9,7 +9,16 @@ angular
         });
       };
 
+      var deleteProfile = function(){
+        return $http.delete('/api/profile', {
+          headers:{
+            Authorization: 'Bearer '+ authentication.logout()
+          }
+        })
+      }
+
       return {
-        getProfile : getProfile
+        getProfile : getProfile,
+        deleteProfile : deleteProfile
       };
     }]);

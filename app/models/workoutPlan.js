@@ -12,6 +12,7 @@ var workoutPlan = new Schema(
         userId : {type : Number},
         userEmail : {type : String},
         userPassword : {type : String},
+        workoutPlanType : [{type : String}],        //on select add 
         workoutPlanTitle : {type : String},        //required = true
               //bodyweight, weights, mixed
                     totalDuration : Number, 

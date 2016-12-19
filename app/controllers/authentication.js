@@ -63,6 +63,20 @@ module.exports.login = function(req, res) {
       // If user is not found
       res.status(401).json(info);
     }
-  })(req, res, next);
+  })(req, res);
+
+};
+
+module.exports.logout = function(req, res) {
+
+  // if(!req.body.name || !req.body.email || !req.body.password) {
+  //   sendJSONresponse(res, 400, {
+  //     "message": "All fields required"
+  //   });
+  //   return;
+  // }
+//var user = require('../models/user');
+  req.logout();
+  res.redirect('/');
 
 };

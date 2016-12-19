@@ -4,10 +4,13 @@
 
 var express = require('express');
 var app = express();
+var path = require('path');
 var bodyParser =  require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
-
+var session = require('express-session');
+var passport = require('passport');
+var cookieParser = require('cookie-parser');
 //latest usable for auth
 //var passport = require('passport');
 //var localStrategy = require('passport-local').Strategy;
@@ -28,8 +31,9 @@ var db = require('./app/config/db');
 
 //grab model
 var WorkoutPlan = require('./app/models/workoutPlan');
+var User = require('./app/models/User')
 //var User = require('./app/models/user');
-//var userConfig = require('./config/passport');
+var userConfig = require('./app/config/passport');
 
 
 
@@ -114,6 +118,31 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // [SH] Use the API routes when path starts with /api
 //app.use('/api', routesApi);
+
+// required for passport
+app.use(session({ secret: 'MY_SECRET', resave: false, saveUninitialized: false } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+// used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
+
+
+//define backend routes
+app.get('/logout', function(req, res){
+            console.log('logging out');
+            req.logout();
+            res.redirect('/');
+        });
 
 //ROUTES ===========================================================================
 require('./app/routes')(app); //configure routes ; load routes and pass in app and fully configured passport
