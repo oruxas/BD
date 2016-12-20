@@ -46,11 +46,7 @@ var auth = jwt({
                     totalDuration : req.body.totalLength, 
                     daysPerWeek : req.body.trainDays, 
                     bodyPart : req.body.bodyPart, 
-                    selectedExercises : [{
-                        title : req.body.exerciseTitle,
-                        link : "linkas",
-                        tags : [ "a", "1", "2" ]    
-                    }] , 
+                    selectedExercises : req.body.exerciseTitle, 
                     sets : req.body.sets, 
                     reps : req.body.reps,
                     restTime : req.body.restTime

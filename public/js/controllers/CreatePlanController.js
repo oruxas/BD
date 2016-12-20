@@ -46,8 +46,13 @@ angular.module('CreatePlanController', [])
             }
             getExercises();
 
-            $scope.master = {};
             
+
+            $scope.master = {};
+
+            //$scope.workoutPlan = {};
+
+               
 
                 $scope.update = function(user) {
                     $scope.master = angular.copy(user);
@@ -57,7 +62,12 @@ angular.module('CreatePlanController', [])
                     $scope.user = angular.copy($scope.master);
                 };
 
-                $scope.save = function(workoutPlan){
+                $scope.save = function(workoutPlan, exerciseTitleObj){
+                        //alert(exerciseTitleObj);
+                       workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
+                        //alert(JSON.stringify(workoutPlan.exerciseTitle));
+                    
+
                     alert(JSON.stringify(workoutPlan));
                     WorkoutPlansFactory.create(workoutPlan);
                 }

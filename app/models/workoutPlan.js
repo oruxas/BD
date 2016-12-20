@@ -18,11 +18,12 @@ var workoutPlan = new Schema(
                     totalDuration : Number, 
                     daysPerWeek : Number, 
                     bodyPart : String, 
-                    selectedExercises : [{
-                        title : String,
-                        link : String,
-                        tags : [ { type : String } ]    
-                    }] , 
+                    selectedExercises : String,
+                    // selectedExercises : [{
+                    //     title : String,
+                    //     link : String,
+                    //     tags : [ { type : String } ]    
+                    // }] , 
                     sets : Number, 
                     reps : Number,
                     restTime : Number

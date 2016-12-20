@@ -65,8 +65,14 @@
             <label class="control-label customLabel col-md-4">Select Exercises: </label>
             <div class="col-md-4">
               <div class="input-group">
-                <select ng-model="selectedExercise" class="form-control">
-                  <option ng-repeat="item in exercises" selected>{{item.selectedExercises.title}}</option>
+                <select  class="form-control" 
+                  ng-model="item.selectedExercises.title"
+                  ng-options="item.selectedExercises.title for item in exercises"
+                   ng-change="exerciseChanged(item.selectedExercises.title)">
+                  <!--<option ng-repeat="item in exercises"ng-model="item.selectedExercises.title"
+                   ng-change="exerciseChanged(item.selectedExercises.title)" selected>
+                   {{item.selectedExercises.title}}
+                   </option>-->
                 </select>
                 <span class="input-group-btn">
                   <button class="btn btn-info"> <a href="/createExercise"> ADD YOUR EXERCISE</a></button><br />
@@ -110,31 +116,7 @@
 
     </div>
     <!--<input type="button" ng-click="reset()" value="Reset" />-->
-    <input type="submit" value="Save"  ng-click="save(workoutPlan)"/>
+    <input type="submit" value="Save"  ng-click="save(workoutPlan, item.selectedExercises.title)"/>
 </form>
 
 <!--TODO ADD description field? -->
-
-
-<!--MODAL CONTENT-->
-
-<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
