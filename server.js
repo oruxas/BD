@@ -31,6 +31,7 @@ var db = require('./app/config/db');
 
 //grab model
 var WorkoutPlan = require('./app/models/workoutPlan');
+var Exercise = require('./app/models/exercises');
 var User = require('./app/models/User')
 //var User = require('./app/models/user');
 var userConfig = require('./app/config/passport');

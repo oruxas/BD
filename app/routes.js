@@ -1,6 +1,7 @@
 // grab the model
 
 var WorkoutPlan = require('./models/workoutPlan');
+var Exercise = require('./models/exercises');
 //var User = require('../app/models/user');
 var passport = require('passport');
 var express = require('express');
@@ -76,7 +77,53 @@ var auth = jwt({
 
         //route to handle delete goes here (app.delete)
 
-        //authentication routes
+       //END PLANS ROUTES 
+
+       //EXERCISES ROUTES
+
+        app.get('/api/exercises', function(req, res){
+            // using mongoose to get all plans in the db:
+           Exercise.find(function(err, exercises){
+                //check for errors, nothing after res.send(err) gets executed
+                if (err) {             
+                    res.send(err);
+                } else {
+                    res.json(exercises);                  
+                }
+            }); //end exercise.find
+        });//end app.get()
+
+        //route to handle creating goes here (app.post)
+        app.post('/api/exercises', function (req, res){
+            console.log('post happening');
+           
+           var newExercise =  new Exercise({
+        selectedExercises : {
+                        title : req.body.title,
+                        link : req.body.link,
+                        tags : req.body.tags        
+                    }
+
+           
+    });
+            newExercise.save(function(err, exercise) {
+                if (err) throw err;
+
+                //console.log('NAUJAS PLANAS: '+ plan);
+                    //find and console.log all plans, cuz of asynch behavior
+                    Exercise.find({}, function(err, exercises){
+                        if (err) throw err;
+
+                        console.log(JSON.stringify(exercises));
+                    });
+
+            }); //end save
+        }); //end post route
+
+       //END EXERCISES ROUTES
+
+
+        //AUTHENTICATION ROUTES
 
         var ctrlProfile = require('../app/controllers/profile');
         var ctrlAuth = require('../app/controllers/authentication');

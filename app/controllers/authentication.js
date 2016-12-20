@@ -77,6 +77,6 @@ module.exports.logout = function(req, res) {
   // }
 //var user = require('../models/user');
   req.logout();
-  res.redirect('/');
+  res.redirect('/home');
 
 };

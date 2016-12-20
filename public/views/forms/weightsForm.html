@@ -10,7 +10,8 @@
         <div class="col-md-4"></div>
       </div>  
     
-    <div class="form-group row">
+    <!--Reference user schema when user is logged in-->
+    <!--<div class="form-group row">
         <label class="control-label customLabel col-md-4">email: </label>
         <div class="col-md-4">
           <input type="text" class="form-control" ng-model="workoutPlan.email" /><br />
@@ -24,7 +25,7 @@
           <input type="text" class="form-control" ng-model="workoutPlan.password" /><br />
         </div>
         <div class="col-md-4"></div>
-    </div>
+    </div>-->
 
     <div class="form-group row">
         <label class="control-label customLabel col-md-4">Workout Plan Title: </label>
@@ -63,16 +64,24 @@
             <!--TODO: add list with available exercises + add exercise functionality -->
             <label class="control-label customLabel col-md-4">Select Exercises: </label>
             <div class="col-md-4">
-              <input type="text" class="form-control" ng-model="workoutPlan.exerciseTitle" /> <br />
-            <!--In form for submit only-->
-            <!--<label class="control-label customLabel">Select Exercises: <input type="text" class="form-control" ng-model="workoutPlan.weights.exercises.link" /></label> <br />
-            <label class="control-label customLabel">Select Exercises: <input type="text" class="form-control" ng-model="workoutPlan.weights.exercises.tags" /></label> <br />-->
-              <button class="btn btn-info" ng-click="addExerciseModal()">ADD YOUR EXERCISE</button><br />
+              <div class="input-group">
+                <select ng-model="selectedExercise" class="form-control">
+                  <option ng-repeat="item in exercises" selected>{{item.selectedExercises.title}}</option>
+                </select>
+                <span class="input-group-btn">
+                  <button class="btn btn-info"> <a href="/createExercise"> ADD YOUR EXERCISE</a></button><br />
+                </span>
+              </div>  
             </div>
             <div class="col-md-4">
               
             </div>
     </div>
+
+   
+
+    <!--END ADD YOUR EXERCISE-->    
+
 
     <div class="form-group row">  
             <label class="control-label customLabel col-md-4">Select number of sets: </label>

@@ -1,7 +1,9 @@
 angular.module('CreatePlanController', [])
-        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory',  function ($scope, WorkoutPlansFactory){
+        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 'ExercisesFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory){
             
-            
+            $scope.exerciseForm = false;
+
             $scope.items = ["bodyweightForm", "weightsForm", "mixedForm", "default"];
             $scope.selection = $scope.items[3];
             $scope.templates = [{
@@ -33,7 +35,16 @@ angular.module('CreatePlanController', [])
                // $scope.mixedTemplate = $scope.templates[2];
                 $scope.selection = $scope.items[3];
             }
-    
+
+
+            //get Exercises
+            function getExercises(){
+                 ExercisesFactory.getData().then(function(data){
+                     $scope.exercises = data;
+                 });
+                //alert(JSON.stringify($scope.exercises));
+            }
+            getExercises();
 
             $scope.master = {};
             
