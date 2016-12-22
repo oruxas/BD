@@ -1,5 +1,5 @@
  angular.module('LogoutController', [])
-  .controller('LogoutController', ['$scope', '$location','$route' ,'meanData', 'authentication', function($scope, $location, $route, meanData, authentication){
+  .controller('LogoutController', ['$scope', '$location', 'meanData', 'authentication', function($scope, $location, meanData, authentication){
    
 
     // meanData.deleteProfile();
@@ -8,9 +8,4 @@
       authentication
         .logout();
 
-        $scope.pageReload = function(){
-          $route.reload();  
-        }
-       
-    
   }]);

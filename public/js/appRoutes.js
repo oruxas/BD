@@ -1,6 +1,6 @@
 angular.module('appRoutes', [])
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-
+           $locationProvider.html5Mode(true);
         $routeProvider
 
         //home page
@@ -47,10 +47,14 @@ angular.module('appRoutes', [])
         templateUrl: 'views/home.html',
         controller: 'LogoutController'
         
-      });
+      })
+      
+      .otherwise({
+        redirectTo: '/'
+    });
        
 
-        $locationProvider.html5Mode(true);
+     
 
     }  
     ]);

@@ -1,5 +1,5 @@
 angular.module('authentication',[])
-    .service('authentication', ['$http', '$window', function($http, $window){
+    .service('authentication', ['$http', '$window',  function($http, $window){
         var saveToken = function (token) {
       $window.localStorage['mean-token'] = token;
     };
@@ -33,6 +33,8 @@ angular.module('authentication',[])
           email : payload.email,
           name : payload.name
         };
+        
+
       }
     };
 

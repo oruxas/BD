@@ -11,5 +11,4 @@ angular.module('MainController', [])
                    //alert(JSON.stringify(result.data)); 
                 $scope.workoutPlans = result.data;
             });
-
         }]);

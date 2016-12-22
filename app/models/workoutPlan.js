@@ -2,16 +2,16 @@
 
 //get mongoose module
 var mongoose = require('mongoose');
-//define our models
+var User = require('../models/User');
 
+//define our models
 //Schema definition:
 var Schema = mongoose.Schema;
 
 var workoutPlan = new Schema(
     {
-        userId : {type : Number},
-        userEmail : {type : String},
-        userPassword : {type : String},
+        userName : String,
+        userEmail : String,
         workoutPlanType : [{type : String}],        //on select add 
         workoutPlanTitle : {type : String},        //required = true
               //bodyweight, weights, mixed

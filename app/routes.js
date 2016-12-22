@@ -38,8 +38,8 @@ var auth = jwt({
             console.log('post happening');
            
            var newPlan =  new WorkoutPlan({
-        userId : req.body.userId,
-        userEmail : req.body.email,
+        userName : req.body.userName,
+        userEmail : req.body.userEmail,
         userPassword : req.body.password,
         workoutPlanTitle : req.body.title,        //required = true
               //bodyweight, weights, mixed

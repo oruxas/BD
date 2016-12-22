@@ -1,5 +1,5 @@
  angular.module('LoginController', [])
-  .controller('LoginController', ['$location','$route' , 'authentication', function($location, $route, authentication){
+  .controller('LoginController', ['$location', 'authentication', function($location, authentication){
     var vm = this;
 
     vm.credentials = {
@@ -15,9 +15,8 @@
           alert(err);
         })
         .then(function(){
-         
           $location.path('profile');
         });
-         $route.reload();
     };
+
   }]);

@@ -1,6 +1,6 @@
 angular.module('CreatePlanController', [])
-        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 'ExercisesFactory',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory){
+        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 'ExercisesFactory', 'authentication', 'PassUserInfo',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo){
             
             $scope.exerciseForm = false;
 
@@ -51,8 +51,14 @@ angular.module('CreatePlanController', [])
             $scope.master = {};
 
             //$scope.workoutPlan = {};
+            
 
-               
+
+               if (angular.isDefined($scope.user)){
+                   //alert(JSON.stringify($scope.user));
+               } else {
+                   //alert('User is not logged in: ' + JSON.stringify(user));
+               }
 
                 $scope.update = function(user) {
                     $scope.master = angular.copy(user);
@@ -64,9 +70,25 @@ angular.module('CreatePlanController', [])
 
                 $scope.save = function(workoutPlan, exerciseTitleObj){
                         //alert(exerciseTitleObj);
+
+                        // if(authentication.isLoggedIn()){
+
+                        // }    
+                
+                        $scope.user = PassUserInfo.getUserInfo()
+
+                        
+                         //alert(JSON.stringify($scope.user));
                        workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
                         //alert(JSON.stringify(workoutPlan.exerciseTitle));
-                    
+                        if(angular.isDefined($scope.user)){
+                            workoutPlan.userName = $scope.user.name;
+                            workoutPlan.userEmail = $scope.user.email;     
+                        } else {
+                            workoutPlan.userName = "guest";
+                            workoutPlan.userEmail = "guest";
+                        }
+                       
 
                     alert(JSON.stringify(workoutPlan));
                     WorkoutPlansFactory.create(workoutPlan);
