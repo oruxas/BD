@@ -125,6 +125,8 @@ app.use(session({ secret: 'MY_SECRET', resave: false, saveUninitialized: false }
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
+
+
 // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -145,9 +147,15 @@ app.get('/logout', function(req, res){
             res.redirect('/');
         });
 
-//ROUTES ===========================================================================
-require('./app/routes')(app); //configure routes ; load routes and pass in app and fully configured passport
 
+
+//ROUTES ===========================================================================
+require('./app/routes')(app); //configure routes ; load routes and pass in app and fully configured passport  
+
+//support page refresh, move to routes.js
+app.use(function(req, res) {
+            res.sendfile(__dirname + '/Public/index.html');
+});    
 
 //START APP ========================================================================
 

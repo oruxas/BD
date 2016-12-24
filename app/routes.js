@@ -140,12 +140,10 @@ var auth = jwt({
        app.get('/logout', ctrlAuth.logout);
         
 
-
+       
         // frontend routes
         
         //route to handle all angular requests
-        app.get('*', function(req, res){
-            res.sendfile('./public/views/index.html'); //loads public/index.html file , required for other routes caching
-        });
+         
     };
 
