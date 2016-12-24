@@ -1,5 +1,5 @@
  angular.module('LoginController', [])
-  .controller('LoginController', ['$location', 'authentication', function($location, authentication){
+  .controller('LoginController', ['$location', '$window', 'authentication', function($location, $window, authentication){
     var vm = this;
 
     vm.credentials = {
@@ -16,7 +16,12 @@
         })
         .then(function(){
           $location.path('profile');
+
+          console.log('reload happening');
+          $window.location.reload();
         });
+
+        
     };
 
   }]);

@@ -12,8 +12,5 @@
         console.log(e);
       });
 
-      // vm.logout = function(){
-      //   authentication.logout();
-      // }
 
     }]);
