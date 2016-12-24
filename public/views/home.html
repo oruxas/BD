@@ -8,10 +8,15 @@
 </div>
 
 <ul ng-model="workoutPlans">
-        <li ng-repeat="workoutPlan in workoutPlans"> 
+        <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'"> 
 
             <uib-accordion close-others="oneAtATime">
-                <div uib-accordion-group class="panel-primary" heading="{{ workoutPlan.workoutPlanTitle }}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                <div uib-accordion-group class="panel-primary" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                   <uib-accordion-heading>
+                        <div class="pull-right"> <span ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star"></i></span> {{workoutPlan.upvotes}}</div>
+                        <div>{{ workoutPlan.workoutPlanTitle }}</div>
+                   </uib-accordion-heading>
+                   
                    <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
                    <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
                    <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />

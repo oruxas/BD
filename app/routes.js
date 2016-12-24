@@ -49,27 +49,34 @@ var auth = jwt({
                     selectedExercises : req.body.exerciseTitle, 
                     sets : req.body.sets, 
                     reps : req.body.reps,
-                    restTime : req.body.restTime
-
-           
+                    restTime : req.body.restTime,
+                    upvotes : 0 
     });
             newPlan.save(function(err, plan) {
                 if (err) throw err;
-
-
-                //console.log('NAUJAS PLANAS: '+ plan);
-
                     //find and console.log all plans, cuz of asynch behavior
                     WorkoutPlan.find({}, function(err, workoutPlans){
                         if (err) throw err;
-
                         console.log(JSON.stringify(workoutPlans));
                     });
-
             }); //end save
-   
-
         }); //end post route
+
+        app.post('/api/workoutPlans/:id', function (req, res){
+            console.log('update happening');
+           
+           var updateDoc = req.body;
+            //delete updateDoc._id;
+            //alert(updateDoc);
+
+            WorkoutPlan.findOneAndUpdate({_id: req.body._id}, updateDoc, function(err, doc) {
+                if (err) {
+                console.log('error updating');
+                } else {
+                res.status(204).end();
+                }
+            });
+        }); //end update route
 
         //route to handle delete goes here (app.delete)
 

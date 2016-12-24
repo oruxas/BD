@@ -26,7 +26,8 @@ var workoutPlan = new Schema(
                     // }] , 
                     sets : Number, 
                     reps : Number,
-                    restTime : Number
+                    restTime : Number,
+                    upvotes : Number
 
            
     }

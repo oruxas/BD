@@ -20,7 +20,12 @@ angular.module('appRoutes', [])
             templateUrl: 'views/createPlan.html',
             controller: 'CreatePlanController' 
         
-    })
+        })
+        // .when('/updatePlan/:id', {
+        //     templateUrl: 'views/createPlan.html',
+        //     controller: 'CreatePlanController' 
+        
+        // })
     .when('/createExercise', {
             templateUrl: 'views/forms/exerciseForm.html',
             controller: 'CreateExerciseController' 

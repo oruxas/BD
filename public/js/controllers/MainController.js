@@ -10,5 +10,24 @@ angular.module('MainController', [])
                 
                    //alert(JSON.stringify(result.data)); 
                 $scope.workoutPlans = result.data;
-            });
+                
+         });
+
+         //var upvotes = 0;
+
+            $scope.addUpvote = function($event, workoutPlan){
+                //TODO: upvote functionality
+                if($event){
+                    $event.stopPropagation();
+                    $event.preventDefault();
+                }
+                //alert(JSON.stringify(workoutPlan));
+                //upvotes++;
+                   workoutPlan.upvotes++;
+                   //updatedb functionality
+                   WorkoutPlansFactory.update(workoutPlan);
+               
+            }
+            
+
         }]);

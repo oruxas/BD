@@ -22,6 +22,19 @@ angular.module('WorkoutPlansService', [])
                         //$scope.scores = response;
                         console.log(JSON.stringify(response));
         });
+                }, //TODO:complete
+                update : function(workoutPlanData){
+                    return $http({
+                        method : 'POST',
+                        url : '/api/workoutPlans/:'+workoutPlanData._id,
+                        headers : { 'Content-Type' : 'application/json' },
+                        data : workoutPlanData
+                        
+                    }).success(function(response){
+                        //$scope.workoutPlan = {};
+                        //$scope.scores = response;
+                        console.log(JSON.stringify(response));
+        });
                 },
 
                 //Call to DELETE workout plan
