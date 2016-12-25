@@ -21,6 +21,36 @@
         </div>
       </form>
 
+      <ul ng-model="userPlans">
+        <li ng-repeat="userPlan in vm.userPlans | orderBy:'-upvotes'"> 
+
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-primary" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                   <uib-accordion-heading>
+                        <div class="pull-right"> <span><i class="fa fa-star"></i></span> {{userPlan.upvotes}}</div>
+                        <div>{{ userPlan.workoutPlanTitle }}</div>
+                   </uib-accordion-heading>
+                   
+                   <p> "Jūsų sporto plano pavadinimas: " " {{userPlan.workoutPlanTitle}} " </p> <br />
+                   <p> "Jūsų sporto plano trukmė: " {{userPlan.totalDuration}} </p> <br />
+                   <p> "Užsiėmimų skaičius per savaitę: " {{userPlan.daysPerWeek}} </p> <br />
+                   <p> "Pasirinkta treniruot kūno dalis: " {{userPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
+                   <p> "Pasirinkti pratimai: " {{userPlan.selectedExercises}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
+                   <p> "Pasirinkti setai: "{{userPlan.sets}} </p> <br /> 
+                   <p> "Pasirinkti pakartojimai: " {{userPlan.reps}} </p> <br />
+                   <p> "Pasirinktas poilsio laikas: " {{userPlan.restTime}} </p> <br />
+                   <p> "Sukurta: " {{userPlan.userName}} </p> <br />
+                   <p> "Kontaktai: " {{userPlan.userEmail}} </p>  
+                </div>  
+            </uib-accordion>
+
+        </li>
+    </ul>
+
+    <div ng-show="vm.showMessage">
+      <p>Šis vartotojas planų neturi</p>
+    </div>
+
     </div>
 
   </div>

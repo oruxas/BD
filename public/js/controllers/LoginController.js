@@ -17,8 +17,8 @@
         .then(function(){
           $location.path('profile');
 
-          console.log('reload happening');
-          $window.location.reload();
+          console.log('replace profile happening');
+          
         });
 
         

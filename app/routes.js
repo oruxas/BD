@@ -33,6 +33,22 @@ var auth = jwt({
             }); //end workoutPlan.find
         });//end app.get()
 
+        app.get('/api/workoutPlans/:email', function(req, res){
+            // using mongoose to get all plans in the db:
+            console.log(req.params.email);
+            var email = req.params.email;
+            WorkoutPlan.find({userEmail: email},function(err, workoutPlans){
+                console.log('Email is: '+email);
+                //check for errors, nothing after res.send(err) gets executed
+                if (err) {             
+                    res.send(err);
+                } else {
+                    console.log(JSON.stringify(workoutPlans));
+                    res.json(workoutPlans);                  
+                }
+            }); //end workoutPlan.find
+        });//end app.get()
+
         //route to handle creating goes here (app.post)
         app.post('/api/workoutPlans', function (req, res){
             console.log('post happening');

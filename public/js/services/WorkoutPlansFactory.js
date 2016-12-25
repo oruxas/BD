@@ -7,7 +7,11 @@ angular.module('WorkoutPlansFactory', [])
                     get : function(){
                         return $http.get('/api/workoutPlans');
                     },
-                //these will work when more API routes are defined on Node side
+
+                    getWithEmail : function(email){
+                        //alert(email);
+                        return $http.get('/api/workoutPlans/'+email);
+                    },
 
                 //calls to POST and create new workoutPlan
                 create : function(workoutPlanData){
