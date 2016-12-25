@@ -1,4 +1,4 @@
-angular.module('WorkoutPlansService', [])
+angular.module('WorkoutPlansFactory', [])
         .factory('WorkoutPlansFactory', ['$http' , function($http){
             
             //interface
