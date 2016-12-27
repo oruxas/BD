@@ -13,6 +13,11 @@ angular.module('WorkoutPlansFactory', [])
                         return $http.get('/api/workoutPlans/'+email);
                     },
 
+                    getById : function(id){
+                        //alert(id);
+                        return $http.get('/api/workoutPlan/'+id);
+                    },
+
                 //calls to POST and create new workoutPlan
                 create : function(workoutPlanData){
                     return $http({

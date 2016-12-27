@@ -15,6 +15,7 @@
                    <uib-accordion-heading>
                         <div class="pull-right"> <span ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star"></i></span> {{workoutPlan.upvotes}}</div>
                         <div>{{ workoutPlan.workoutPlanTitle }}</div>
+                        <button class="btn btn-info" ng-click="downloadPdf(workoutPlan._id)"> Download PDF!</button>
                    </uib-accordion-heading>
                    
                    <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
@@ -27,6 +28,10 @@
                    <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
                    <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
                    <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
+                
+                   <!-- FLOW: call function in WorkoutPlansFactory that would get the plan from routes.js and send it back here -->
+                   
+                
                 </div>  
             </uib-accordion>
 

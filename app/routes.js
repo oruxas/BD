@@ -6,6 +6,11 @@ var Exercise = require('./models/exercises');
 var passport = require('passport');
 var express = require('express');
 var router = express.Router();
+
+//for pdf generation
+//node-render module for pdf generation
+var nRender = require('node-render');
+
 var jwt = require('express-jwt');
 var auth = jwt({
   secret: 'MY_SECRET',
@@ -33,12 +38,38 @@ var auth = jwt({
             }); //end workoutPlan.find
         });//end app.get()
 
+           app.get('/api/workoutPlan/:id', function(req, res){
+            // using mongoose to get all plans in the db:
+           // alert(JSON.stringify(req.params.id));
+           console.log(JSON.stringify(req.params.id));
+            var planId = req.params.id;
+            WorkoutPlan.findOne({_id: req.params.id},function(err, workoutPlan){
+                console.log('ID is: '+ planId);
+                //check for errors, nothing after res.send(err) gets executed
+                if (err) {             
+                    res.send(err);
+                } else {
+                    console.log(JSON.stringify(workoutPlan));
+
+                    //format this input
+                    var input="<h1 style ='color: blue'>"+workoutPlan.workoutPlanTitle+"</h1>";
+                    var options = null;
+                    var output = './test';
+
+                    nRender.render(input, output, options);
+
+                    res.json(workoutPlan);                  
+                }
+            }); //end workoutPlan.find
+            //might need to add html here for pdf
+        });//end app.get()
+
         app.get('/api/workoutPlans/:email', function(req, res){
             // using mongoose to get all plans in the db:
-            console.log(req.params.email);
+            //console.log(req.params.email);
             var email = req.params.email;
             WorkoutPlan.find({userEmail: email},function(err, workoutPlans){
-                console.log('Email is: '+email);
+                //console.log('Email is: '+email);
                 //check for errors, nothing after res.send(err) gets executed
                 if (err) {             
                     res.send(err);
@@ -48,6 +79,8 @@ var auth = jwt({
                 }
             }); //end workoutPlan.find
         });//end app.get()
+
+      
 
         //route to handle creating goes here (app.post)
         app.post('/api/workoutPlans', function (req, res){

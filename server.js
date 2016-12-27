@@ -11,11 +11,6 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
-//latest usable for auth
-//var passport = require('passport');
-//var localStrategy = require('passport-local').Strategy;
-//var cookieParser = require('cookie-parser');
-//var session = require('express-session');
 
 var morgan = require('morgan');
 //var flash = require('connect-flash');
@@ -161,6 +156,8 @@ app.use(function(req, res) {
 
 //startup our app at http http://localhost:8080
 app.listen(port);
+
+
 
 //checking
 console.log('Prisijunges prie port\'o: ' + port);

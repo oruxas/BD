@@ -1,5 +1,6 @@
 angular.module('MainController', [])
-        .controller('MainController', ['$scope', 'WorkoutPlansFactory', function($scope, WorkoutPlansFactory){
+        .controller('MainController', ['$scope', '$http', 'WorkoutPlansFactory', 
+                                    function($scope, $http, WorkoutPlansFactory){
 
             $scope.tagline = "Should there be a list to pick workout immediately? Or two choices: \"Search for Plan\" and \"Create Plan\" ";
             
@@ -12,8 +13,6 @@ angular.module('MainController', [])
                 $scope.workoutPlans = result.data;
                 
          });
-
-         //var upvotes = 0;
 
             $scope.addUpvote = function($event, workoutPlan){
                 //TODO: upvote functionality
@@ -28,6 +27,14 @@ angular.module('MainController', [])
                    WorkoutPlansFactory.update(workoutPlan);
                
             }
+
+            $scope.downloadPdf = function(id){
+               // alert(JSON.stringify(id));
+               WorkoutPlansFactory.getById(id).then(function(result){
+                   $scope.print = result.data;
+                   alert(JSON.stringify($scope.print));
+               });
+            }   
             
 
         }]);

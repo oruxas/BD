@@ -5,7 +5,7 @@
 
     
     vm.user = {};  
-    vm.userPlans = {};
+    //vm.userPlans = {};
     vm.showMessage = true;
     meanData.getProfile()
       .success(function(data) {
