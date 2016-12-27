@@ -28,7 +28,11 @@ angular.module('MainController', [])
                
             }
 
-            $scope.downloadPdf = function(id){
+            $scope.downloadPdf = function($event, id){
+                 if($event){
+                    $event.stopPropagation();
+                    $event.preventDefault();
+                }
                // alert(JSON.stringify(id));
                WorkoutPlansFactory.getById(id).then(function(result){
                    $scope.print = result.data;

@@ -13,9 +13,13 @@
             <uib-accordion close-others="oneAtATime">
                 <div uib-accordion-group class="panel-primary" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                    <uib-accordion-heading>
-                        <div class="pull-right"> <span ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star"></i></span> {{workoutPlan.upvotes}}</div>
+                        <div class="pull-right">
+                            
+                            <button class="btn btn-info btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)"> Download PDF!</button>
+
+                             <span ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star"></i></span> {{workoutPlan.upvotes}}</div>
                         <div>{{ workoutPlan.workoutPlanTitle }}</div>
-                        <button class="btn btn-info" ng-click="downloadPdf(workoutPlan._id)"> Download PDF!</button>
+                        
                    </uib-accordion-heading>
                    
                    <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
