@@ -10,6 +10,7 @@ var router = express.Router();
 //for pdf generation
 //node-render module for pdf generation
 var nRender = require('node-render');
+var opener = require('opener');
 
 var jwt = require('express-jwt');
 var auth = jwt({
@@ -54,9 +55,15 @@ var auth = jwt({
                     //format this input
                     var input="<h1 style ='color: blue'>"+workoutPlan.workoutPlanTitle+"</h1>";
                     var options = null;
-                    var output = './test';
+
+                    var date = new Date().toDateString();
+                    date.replace(/ /g,'');
+
+                    var output = './file'+date;
 
                     nRender.render(input, output, options);
+
+                    opener('../file'+date+'.pdf');
 
                     res.json(workoutPlan);                  
                 }
@@ -150,7 +157,7 @@ var auth = jwt({
             console.log('post happening');
            
            var newExercise =  new Exercise({
-        selectedExercises : {
+        selectedExercises : {                       //not needed?
                         title : req.body.title,
                         link : req.body.link,
                         tags : req.body.tags        

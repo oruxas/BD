@@ -15,6 +15,13 @@ angular.module('CreateExerciseController', [])
                 };
 
                 $scope.saveExercise = function(exercise){
+                    //alert(exercise.tags);
+
+                    //split exercise.tags into array.
+                    var tagsArr = exercise.tags.split(",");
+                    //alert('po splitinimo tagsArr tipas yra: '+ typeof tagsArr + " o pries exercise.tags tipas: "+ typeof exercise.tags);
+
+                    exercise.tags = tagsArr;
                     alert(JSON.stringify(exercise));
                     ExercisesFactory.create(exercise);
 

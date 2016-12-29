@@ -9,11 +9,11 @@ var Schema = mongoose.Schema;
 
 var exercises = new Schema(
     {
-                    selectedExercises : {
-                        title : String,
-                        link : String,
-                        tags : [ { type : String } ]         
-                    }
+        selectedExercises : {
+            title : String,
+            link : String,
+            tags : [ { type : String } ]         
+        }
     }
 );
 

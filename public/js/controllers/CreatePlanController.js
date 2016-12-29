@@ -1,6 +1,7 @@
 angular.module('CreatePlanController', [])
-        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 'ExercisesFactory', 'authentication', 'PassUserInfo',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo){
+        .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 
+                    'ExercisesFactory', 'authentication', 'PassUserInfo', 'TagsFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo, TagsFactory){
             
             $scope.exerciseForm = false;
 
@@ -25,6 +26,13 @@ angular.module('CreatePlanController', [])
              $scope.loadWeightsForm =  function() {
                // $scope.weightsTemplate = $scope.templates[1];
                 $scope.selection = $scope.items[1];
+                //filtered exercises
+                $scope.weightsExercises = TagsFactory.getWeightsExercises();
+                //get body parts tag which will be selectable for further filtering
+                $scope.bodyPartTags = TagsFactory.getBodyPartTags();
+                //alert(JSON.stringify($scope.bodyPartTags));
+
+                //alert(JSON.stringify($scope.weightsExercises));
             }
              $scope.loadMixedForm =  function() {
                // $scope.mixedTemplate = $scope.templates[2];
@@ -38,13 +46,15 @@ angular.module('CreatePlanController', [])
 
 
             //get Exercises
-            function getExercises(){
-                 ExercisesFactory.getData().then(function(data){
-                     $scope.exercises = data;
-                 });
-                //alert(JSON.stringify($scope.exercises));
-            }
-            getExercises();
+            // function getExercises(){
+            //      ExercisesFactory.getData().then(function(data){
+            //          $scope.exercises = data;
+            //      });
+            //     //alert(JSON.stringify($scope.exercises));
+            // }
+            // getExercises();
+
+
 
             
 
@@ -52,13 +62,6 @@ angular.module('CreatePlanController', [])
 
             //$scope.workoutPlan = {};
             
-
-
-               if (angular.isDefined($scope.user)){
-                   //alert(JSON.stringify($scope.user));
-               } else {
-                   //alert('User is not logged in: ' + JSON.stringify(user));
-               }
 
                 $scope.update = function(user) {
                     $scope.master = angular.copy(user);
