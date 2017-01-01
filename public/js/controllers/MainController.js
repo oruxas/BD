@@ -32,12 +32,15 @@ angular.module('MainController', [])
                  if($event){
                     $event.stopPropagation();
                     $event.preventDefault();
+                    //alert($index);
+                    // alert(JSON.stringify(id));
+
+                    WorkoutPlansFactory.getById(id).then(function(result){
+                        $scope.print = result.data;
+                        //alert(JSON.stringify($scope.print));
+                    });
                 }
-               // alert(JSON.stringify(id));
-               WorkoutPlansFactory.getById(id).then(function(result){
-                   $scope.print = result.data;
-                   alert(JSON.stringify($scope.print));
-               });
+               
             }   
             
 

@@ -24,13 +24,24 @@ angular.module('CreatePlanController', [])
             }
 
              $scope.loadWeightsForm =  function() {
-               // $scope.weightsTemplate = $scope.templates[1];
+                $scope.bodyPartsSelected = true;
                 $scope.selection = $scope.items[1];
                 //filtered exercises
-                $scope.weightsExercises = TagsFactory.getWeightsExercises();
+                
                 //get body parts tag which will be selectable for further filtering
                 $scope.bodyPartTags = TagsFactory.getBodyPartTags();
                 //alert(JSON.stringify($scope.bodyPartTags));
+                 $scope.weightsExercises = TagsFactory.getWeightsExercises();
+                $scope.bodyPartsChanged = function(obj){
+                    //alert(obj); //array of exercises
+
+                    
+                    
+                       
+                        //alert(JSON.stringify($scope.weightsExercises));
+                 
+
+                }
 
                 //alert(JSON.stringify($scope.weightsExercises));
             }

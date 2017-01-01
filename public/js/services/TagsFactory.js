@@ -27,8 +27,17 @@ angular
                  });
                 //alert(JSON.stringify($scope.exercises));
                 return weightsExercises;
-            }
+            } //end getWeightsExercises
            // getExercises();
+
+           var selectedBodyParts = [];
+           function getExercisesByBodyPart(){
+               ExercisesFactory.getData().then(function(data){
+                   
+
+
+               })
+           }
 
            //get bodyPartTags
 

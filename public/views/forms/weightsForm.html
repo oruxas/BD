@@ -1,14 +1,6 @@
 
 <form novalidate class="form-group form-horizontal">
-    <h3>This is temp for WEIGHTS</h3>
-    
-      <div class="form-group row">
-        <label class="control-label customLabel col-md-4">ID: </label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" ng-model="workoutPlan.userId" /><br />  
-        </div>
-        <div class="col-md-4"></div>
-      </div>  
+    <h3>This is temp for WEIGHTS</h3> 
     
     <div class="form-group row">
         <label class="control-label customLabel col-md-4">Workout Plan Title: </label>
@@ -42,8 +34,9 @@
               <!-- <input type="text" class="form-control" ng-model="workoutPlan.bodyPart" />-->
               <select class="form-control"
               ng-model="workoutPlan.bodyPart"
+              multiple="true"
               ng-options=" bodyPart for bodyPart in bodyPartTags"
-              ng-change="bodyPartChanged(workoutPlan.bodyPart)">
+              ng-change="bodyPartsChanged(workoutPlan.bodyPart)">
               <!-- TODO: push selected body parts in array and look for matches. -->
               </select>
 

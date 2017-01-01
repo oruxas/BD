@@ -53,7 +53,14 @@ var auth = jwt({
                     console.log(JSON.stringify(workoutPlan));
 
                     //format this input
-                    var input="<h1 style ='color: blue'>"+workoutPlan.workoutPlanTitle+"</h1>";
+                    var input="<h1> Jūsų plano pavadinimas: "+ "<span style ='color: blue'>"+workoutPlan.workoutPlanTitle+"</span>"+"</h1> <br /> \
+                    <h3> Jūsų plano trukmė: "+ "<span style ='color: blue'>"+workoutPlan.totalDuration+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų treniruočių dienos: "+ "<span style ='color: blue'>"+workoutPlan.daysPerWeek+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų pasirinkta/os kūno dalys: "+ "<span style ='color: blue'>"+workoutPlan.bodyPart+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų pasirinkti pratimai: "+ "<span style ='color: blue'>"+workoutPlan.selectedExercises+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų pasirinkti setai: "+ "<span style ='color: blue'>"+workoutPlan.sets+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų pasirinkti pakartojimai: "+ "<span style ='color: blue'>"+workoutPlan.reps+"</span>"+"</h3> <br /> \
+                    <h3> Jūsų pasirinktas poilsio laikas: "+ "<span style ='color: blue'>"+workoutPlan.restTime+"</span>"+"</h3> <br />";
                     var options = null;
 
                     var date = new Date().toDateString();
@@ -62,8 +69,8 @@ var auth = jwt({
                     var output = './file'+date;
 
                     nRender.render(input, output, options);
-
-                    opener('../file'+date+'.pdf');
+                    //fix
+                    //opener('./file'+date+'.pdf');
 
                     res.json(workoutPlan);                  
                 }
