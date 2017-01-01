@@ -7,10 +7,13 @@ var passport = require('passport');
 var express = require('express');
 var router = express.Router();
 
+var fileUrl = require('file-url');
+var fs = require('fs');
+
 //for pdf generation
 //node-render module for pdf generation
 var nRender = require('node-render');
-var opener = require('opener');
+var open = require('open');
 
 var jwt = require('express-jwt');
 var auth = jwt({
@@ -68,9 +71,26 @@ var auth = jwt({
 
                     var output = './file'+date;
 
-                    nRender.render(input, output, options);
+                    
                     //fix
-                    //opener('./file'+date+'.pdf');
+
+                    nRender.render(input, output, options);
+                   // console.log(newFileUrl);
+                    //time to create file
+
+                      var newFileUrl = fileUrl("file"+date+".pdf");
+                      
+
+                      if(fs.existsSync(newFileUrl)){
+                          open(newFileUrl,"chrome");
+                      } else{
+                          setTimeout( function(){
+                            nRender.render(input, output, options);
+                            open(newFileUrl,"chrome");
+                        },1500 );
+                      }
+                    
+                    
 
                     res.json(workoutPlan);                  
                 }

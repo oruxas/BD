@@ -12,13 +12,15 @@
     "express": "~4.5.1",
     "express-jwt": "^5.1.0",
     "express-session": "^1.14.2",
+    "file-url": "^2.0.0",
+    "fs": "0.0.2",
     "jsonwebtoken": "^7.2.1",
     "method-override": "~2.0.2",
     "mongodb": "^2.2.11",
     "mongoose": "^4.7.0",
     "morgan": "^1.7.0",
     "node-render": "^1.1.1",
-    "opener": "^1.4.2",
+    "open": "0.0.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   }
