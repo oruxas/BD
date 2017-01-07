@@ -48,7 +48,7 @@
     
 </head>
 <body ng-app="workoutPlansApp" ng-controller="MainController">
-<div class="container" ng-controller="NavigationController as navvm">
+<div class="container" ng-controller="NavigationController as navvm ">
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse" >
@@ -57,7 +57,7 @@
         </div>
 
         <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" >
             <li><a href="/workoutPlans">Workout Plans</a></li>
             <li><a href="/createPlan">Create Plan</a></li>
 
@@ -65,14 +65,16 @@
             
 
             <!--Links to log in/ register-->
-            <li ng-hide="navvm.isLoggedIn"><a href="/login">Sign in</a></li>
-            <li ng-show="navvm.currentUser"><a href="/profile">{{ navvm.currentUser.name }}</a></li>
+            <li ng-hide="navvm.isLoggedIn"><a ng-href="login">Sign in</a></li>
+            <li ng-show="navvm.isLoggedIn"><a ng-href="profile">{{navvm.currentUser.name }}</a></li>
+            
            <!-- <li> <a href="/login"><span class="fa fa-user"></span> Local Login</a> </li>
             <li> <a href="/signup"><span class="fa fa-user"></span> Local Signup</a> </li>
 
              <li> <a href="/profile"><span class="fa fa-user"></span> Profile</a> </li>-->
 
         </ul>
+      
     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT -->

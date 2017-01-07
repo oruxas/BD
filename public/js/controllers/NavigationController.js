@@ -1,12 +1,22 @@
 angular.module('NavigationController', [])
-  .controller('NavigationController', ['$location','authentication', 'PassUserInfo', function($location, authentication, PassUserInfo){
-  var vm = this;
-
+  .controller('NavigationController', ['$scope','$location','authentication', 'PassUserInfo',  
+              function($scope, $location, authentication, PassUserInfo){
+    var vm = this;
+    
     vm.isLoggedIn = authentication.isLoggedIn();
 
-    vm.currentUser = authentication.currentUser();
+    
+    //alert(vm.currentUser);
+    
+     vm.currentUser = authentication.currentUser();
+ 
+     
+
 
    
+   
       PassUserInfo.addUserInfo(vm.currentUser);
+
+      
    
 }]);

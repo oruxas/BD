@@ -1,5 +1,5 @@
 angular.module('MainController', [])
-        .controller('MainController', ['$scope', '$http', 'WorkoutPlansFactory', 
+        .controller('MainController', ['$scope', '$http', 'WorkoutPlansFactory',  
                                     function($scope, $http, WorkoutPlansFactory){
 
             $scope.tagline = "Should there be a list to pick workout immediately? Or two choices: \"Search for Plan\" and \"Create Plan\" ";

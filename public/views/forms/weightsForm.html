@@ -33,10 +33,10 @@
             <div class="col-md-4">
               <!-- <input type="text" class="form-control" ng-model="workoutPlan.bodyPart" />-->
               <select class="form-control"
-              ng-model="workoutPlan.bodyPart"
+              ng-model="selected"
               multiple="true"
               ng-options=" bodyPart for bodyPart in bodyPartTags"
-              ng-change="bodyPartsChanged(workoutPlan.bodyPart)">
+              ng-change="bodyPartsChanged(selected)"> <!--workoutPlan.bodyPart-->
               <!-- TODO: push selected body parts in array and look for matches. -->
               </select>
 

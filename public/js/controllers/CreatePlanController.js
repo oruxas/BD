@@ -31,16 +31,20 @@ angular.module('CreatePlanController', [])
                 //get body parts tag which will be selectable for further filtering
                 $scope.bodyPartTags = TagsFactory.getBodyPartTags();
                 //alert(JSON.stringify($scope.bodyPartTags));
-                 $scope.weightsExercises = TagsFactory.getWeightsExercises();
-                $scope.bodyPartsChanged = function(obj){
-                    //alert(obj); //array of exercises
-
-                    
-                    
-                       
-                        //alert(JSON.stringify($scope.weightsExercises));
                  
+                 $scope.weightsExercises = TagsFactory.getWeightsExercises();
+               
+                $scope.bodyPartsChanged = function(bodyPartsArr){
+                    //console.log(bodyPartsArr); //array of exercises
 
+                   $scope.selectedBodyParts = bodyPartsArr;
+
+                   TagsFactory.getWeightsExercisesByBodyPart(bodyPartsArr);
+
+                //    console.log(JSON.stringify($scope.selectedBodyParts));
+                //     //only happen after body part selected
+                //    // $scope.weightsExercises = TagsFactory.getWeightsExercisesByBodyPart(bodyPartsArr);
+                //    console.log(JSON.stringify($scope.weightsExercises[0].selectedExercises.tags));
                 }
 
                 //alert(JSON.stringify($scope.weightsExercises));
@@ -109,4 +113,4 @@ angular.module('CreatePlanController', [])
                 }
 
                 $scope.reset();
-        }]);
+        }])//comparing arrays;

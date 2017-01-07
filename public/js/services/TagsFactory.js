@@ -14,7 +14,7 @@ angular
            //get Exercises
             function getWeightsExercises(){
                  ExercisesFactory.getData().then(function(data){
-                     //alert(JSON.stringify(data[0].selectedExercises.tags)); //gets tags
+                    // alert(JSON.stringify(data[0].selectedExercises.tags)); //gets tags
 
                      for(var i=0; i<data.length; i++){
                          for(j=0; j< data[i].selectedExercises.tags.length; j++){
@@ -30,14 +30,40 @@ angular
             } //end getWeightsExercises
            // getExercises();
 
-           var selectedBodyParts = [];
-           function getExercisesByBodyPart(){
+           
+           var weightsExercisesByBodyPart =[];
+           function getWeightsExercisesByBodyPart(bodyPartsArr){ //arr b
+               //alert(JSON.stringify(bodyPartsArr));
+               //selectedBodyParts = bodyPartsArr.slice(0); //why not working push??
+               
                ExercisesFactory.getData().then(function(data){
-                   
+                   //alert(JSON.stringify(data));
 
+                   var found = false;
+                   //console.log(bodyPartsArr[0]);
+                
+                   //console.log(Array.isArray(bodyPartsArr));
+                        //console.log('happening');
+                    for(var i=0; i< data.length; i++){
+                       
+                       for(var j=0; j< bodyPartsArr.length;j++){
+                           if (data[0].selectedExercises.tags.indexOf(JSON.stringify(bodyPartsArr[1])) > -1){
+                               console.log(data[i]);
+                               weightsExercisesByBodyPart.push(data[i]);
+                               found=true;
+                               break;
+                           }
+                       }
+                    }  
+                      //console.log(weightsExercisesByBodyPart);
+                    //console.log(weightsExercisesByBodyPart) ;
+                   // console.log(weightsExercisesByBodyPart);
+                   //console.log(data[0].selectedExercises.tags);
+               });
 
-               })
            }
+
+
 
            //get bodyPartTags
 
@@ -62,7 +88,8 @@ angular
 
     return {
         getWeightsExercises : getWeightsExercises,
-        getBodyPartTags : getBodyPartTags
+        getBodyPartTags : getBodyPartTags,
+        getWeightsExercisesByBodyPart: getWeightsExercisesByBodyPart
     }    
 
 }]);
