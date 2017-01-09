@@ -35,3 +35,20 @@
       <!--<input type="button" ng-click="reset()" value="Reset" />-->
       <input type="submit" value="Save"  ng-click="saveExercise(exercise)"/>
   </form>
+
+      <form novalidate class="form-group form-horizontal">
+      <h3>This is temp for Tags</h3>
+
+      <div class="form-group row">        
+              <label class="control-label customLabel col-md-4">Tag Title: </label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" ng-model="tag.title" /> <br />
+              </div>
+              <div class="col-md-4">
+                
+              </div>
+      </div>
+
+      <!--<input type="button" ng-click="reset()" value="Reset" />-->
+      <input type="submit" value="Save"  ng-click="saveTag(tag)"/>
+  </form>

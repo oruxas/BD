@@ -24,8 +24,12 @@ angular.module('CreateExerciseController', [])
                     exercise.tags = tagsArr;
                     alert(JSON.stringify(exercise));
                     ExercisesFactory.create(exercise);
+                }
 
-                
+                //tags
+                $scope.saveTag = function(tag){
+                    alert(JSON.stringify(tag));
+                    ExercisesFactory.createTag(tag);
                 }
 
                 $scope.reset();

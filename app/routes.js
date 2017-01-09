@@ -2,6 +2,7 @@
 
 var WorkoutPlan = require('./models/workoutPlan');
 var Exercise = require('./models/exercises');
+var Tag = require('./models/tags');
 //var User = require('../app/models/user');
 var passport = require('passport');
 var express = require('express');
@@ -191,7 +192,7 @@ var auth = jwt({
                     }
 
            
-    });
+        });
             newExercise.save(function(err, exercise) {
                 if (err) throw err;
 
@@ -207,6 +208,28 @@ var auth = jwt({
         }); //end post route
 
        //END EXERCISES ROUTES
+        app.post('/api/tag', function (req, res){
+            console.log('post happening');
+           console.log(req.body);
+           var newTag =  new Tag({
+                        tag : req.body.title
+            });
+            newTag.save(function(err, tag) {
+                if (err) throw err;
+
+                //console.log('NAUJAS PLANAS: '+ plan);
+                    //find and console.log all plans, cuz of asynch behavior
+                    Tag.find({}, function(err, tags){
+                        if (err) throw err;
+
+                        console.log(JSON.stringify(tags));
+                    });
+
+            }); //end save
+        }); //end post route
+
+
+       //END TAGS ROUTES
 
 
         //AUTHENTICATION ROUTES

@@ -31,7 +31,12 @@ angular.module('appRoutes', [])
             controller: 'CreateExerciseController' 
         
     })
- 
+    .when('/tag', {
+            templateUrl: '/views/forms/exerciseForm.html',
+            controller: 'CreateExerciseController' 
+        
+    })
+    
     //authentication
      .when('/register', {
         templateUrl: '/views/register.html',

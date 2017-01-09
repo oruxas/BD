@@ -23,7 +23,21 @@ angular.module('ExercisesFactory', [])
                     }).success(function(response){
                         
                         console.log(JSON.stringify(response));
-        });
+                      });
+                },
+
+                createTag : function(tagData){
+                    return $http({
+                        method : 'POST',
+                        url : '/api/tag',
+                        headers : { 'Content-Type' : 'application/json' },
+                        data : tagData
+                        
+                    }).success(function(response){
+                        
+                        console.log(JSON.stringify(response));
+                      });
+
                 },
 
                 //Call to DELETE exercise
