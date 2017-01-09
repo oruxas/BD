@@ -5,7 +5,8 @@ angular.module('RegisterController', [])
     vm.credentials = {
       name : "",
       email : "",
-      password : ""
+      password : "",
+      //role : "guest"
     };
 
     vm.onSubmit = function () {
@@ -16,6 +17,8 @@ angular.module('RegisterController', [])
           alert(err);
         })
         .then(function(){
+
+          console.log('success')
           $location.path('profile');
         });
     };

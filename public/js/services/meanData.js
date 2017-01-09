@@ -2,6 +2,7 @@ angular
     .module('meanData',[])
     .service('meanData', ['$http', 'authentication', function($http, authentication){
       var getProfile = function () {
+        console.log('meanData getProfile happening');
         return $http.get('/api/profile', {
           headers: {
             Authorization: 'Bearer '+ authentication.getToken()

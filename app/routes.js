@@ -214,12 +214,15 @@ var auth = jwt({
         var ctrlProfile = require('../app/controllers/profile');
         var ctrlAuth = require('../app/controllers/authentication');
 
+        
+
+        // authentication
+        app.post('/api/register', ctrlAuth.register);
+        app.post('/api/login', ctrlAuth.login);
+
         // profile
        app.get('/api/profile', auth, ctrlProfile.profileRead);
 
-        // authentication
-        app.post('/register', ctrlAuth.register);
-        app.post('/api/login', ctrlAuth.login);
        app.get('/logout', ctrlAuth.logout);
         
 
