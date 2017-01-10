@@ -1,5 +1,5 @@
  <!--ADD YOUR EXERCISE -->
-    <form novalidate class="form-group form-horizontal">
+    <form name="exerciseForm" novalidate class="form-group form-horizontal">
       <h3>This is temp for EXERCISES</h3>
 
       <div class="form-group row">        
@@ -24,8 +24,15 @@
       <div class="form-group row">        
               <!--TODO: add list with available Tags to select -->
               <label class="control-label customLabel col-md-4">Tags of exercise (separate by coma): </label>
-              <div class="col-md-4">
-                <input type="text" class="form-control" ng-model="exercise.tags" /> <br />
+              <div class=" col-md-4">
+                <!--<input type="text" class="form-control" ng-model="exercise.tags" /> <br />-->
+                <buttnon class="btn btn-primary btn-sm" ng-repeat="tag in exerciseTags track by $index" 
+                  
+                  ng-disabled="tag.disabled"
+                  ng-click="passTags(tag)"
+                  style="display: inline-block; margin: 5px; width: 80px;">
+                  {{tag.tag}} <!-- fix db naming -->
+                </button>
               </div>
               <div class="col-md-4">
                 
@@ -34,7 +41,7 @@
 
       <!--<input type="button" ng-click="reset()" value="Reset" />-->
       <input type="submit" value="Save"  ng-click="saveExercise(exercise)"/>
-  </form>
+  <!--</form>
 
       <form novalidate class="form-group form-horizontal">
       <h3>This is temp for Tags</h3>
@@ -48,7 +55,7 @@
                 
               </div>
       </div>
-
+-->
       <!--<input type="button" ng-click="reset()" value="Reset" />-->
-      <input type="submit" value="Save"  ng-click="saveTag(tag)"/>
-  </form>
+     <!-- <input type="submit" value="Save"  ng-click="saveTag(tag)"/>
+  </form>-->

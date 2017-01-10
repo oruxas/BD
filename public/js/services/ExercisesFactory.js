@@ -26,6 +26,7 @@ angular.module('ExercisesFactory', [])
                       });
                 },
 
+                //Tags part
                 createTag : function(tagData){
                     return $http({
                         method : 'POST',
@@ -39,6 +40,14 @@ angular.module('ExercisesFactory', [])
                       });
 
                 },
+
+                getTagData : function(){
+                        var promise = $http.get('/api/tag').then(function(response){
+                            return response.data;
+                        });
+                        return promise;
+                    },
+                //end Tag data
 
                 //Call to DELETE exercise
                 delete : function(id){

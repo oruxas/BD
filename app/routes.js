@@ -228,6 +228,18 @@ var auth = jwt({
             }); //end save
         }); //end post route
 
+         app.get('/api/tag', function(req, res){
+            // using mongoose to get all plans in the db:
+           Tag.find(function(err, tags){
+                //check for errors, nothing after res.send(err) gets executed
+                if (err) {             
+                    res.send(err);
+                } else {
+                    res.json(tags);                  
+                }
+            }); //end exercise.find
+        });//end app.get()
+
 
        //END TAGS ROUTES
 
