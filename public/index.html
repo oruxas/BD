@@ -48,10 +48,10 @@
     
 </head>
 <body ng-app="workoutPlansApp" ng-controller="MainController">
-<div class="container" ng-controller="NavigationController as navvm ">
+<div  ng-controller="NavigationController as navvm ">
 
     <!-- HEADER -->
-    <nav class="navbar navbar-inverse" >
+    <nav class="navbar navbar-inverse customNavbar" >
         <div class="navbar-header">
             <a class="navbar-brand" href="/">BAKALAURINIS</a>
         </div>
@@ -78,7 +78,9 @@
     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+    <div class="container">
+        <div ng-view></div>
+    </div>
 
 </div>
 </body>

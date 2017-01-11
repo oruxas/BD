@@ -1,6 +1,8 @@
 body{
+    margin: 0;
+    padding: 0;
     /* Location of the image */
-    background-color: #0B1C19;
+    background-color: #1a1a1a;
   /*background-image: url(../images/background3.jpg);*/
   
   /* Background image is centered vertically and horizontally at all times */
@@ -31,6 +33,44 @@ label {
     display: inline-block;
 }
 
+.customNavbar{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-color: #000000;
+    
+}
+
+.customNavbar>ul>li a {
+    color: #ffffff !important;
+}
+.customNavbar>ul>li a:hover {
+    border-bottom: 4px solid #b50000;
+}
+.customNavbar>ul>li a:active {
+    border-bottom: 4px solid #b50000;
+}
+
+/*Accordion styling*/
+.accordionHeading {
+    background-color: #320000 ;
+    color: #ffffff;
+    width: 24vw;
+}
+.accordionBody {
+    background-color: #d5d5d5;
+    color: #000000;
+    padding: 20px;
+    margin: -16px;
+}
+#star{
+    color: #fff200;
+}
+.planTitle{
+    text-align: center;
+    z-index: 999;
+}
+
 .customButton{
     color: #ffffff;
     width: 200px;
@@ -40,4 +80,5 @@ label {
 
 .downloadPdf{
    margin-right: 10px;
+   background-color: #cf0b0b;
 }

@@ -52,6 +52,7 @@
               <div class="input-group">
                 <select  class="form-control" 
                   ng-model="item.selectedExercises.title"
+                  multiple="false"
                   ng-options="item.selectedExercises.title for item in weightsExercises"
                    ng-change="exerciseChanged(item.selectedExercises.title)">
                   <!--<option ng-repeat="item in exercises"ng-model="item.selectedExercises.title"

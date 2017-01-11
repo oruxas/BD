@@ -97,6 +97,7 @@ angular.module('CreatePlanController', [])
 
                         
                          //alert(JSON.stringify($scope.user));
+                         //TODO change to array
                        workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
                         //alert(JSON.stringify(workoutPlan.exerciseTitle));
                         if(angular.isDefined($scope.user)){
