@@ -119,7 +119,7 @@ var auth = jwt({
 
         //route to handle creating goes here (app.post)
         app.post('/api/workoutPlans', function (req, res){
-            console.log('post happening');
+            console.log(req.body);
            
            var newPlan =  new WorkoutPlan({
         userName : req.body.userName,

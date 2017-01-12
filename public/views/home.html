@@ -7,39 +7,42 @@
 
 </div>
 
-<ul ng-model="workoutPlans">
-        <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'"> 
+<div class="row">
+    <ul ng-model="workoutPlans" >
+            <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'" style="display:inline;"> 
 
-            <uib-accordion close-others="oneAtATime">
-                <div uib-accordion-group class="accordionHeading" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                   <uib-accordion-heading >
-                        <span ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star" id="star"></i> {{workoutPlan.upvotes}}</span>
-                        <div class="pull-right">
+                <uib-accordion close-others="oneAtATime">
+                    <div uib-accordion-group class="accordionHeading" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    <uib-accordion-heading >
+                            <div class="container"> 
+                                <div id="star" ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star" ></i> {{workoutPlan.upvotes}}</div>
+                                <div >
+                                    
+                                    <button class="btn btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)"> Download PDF!</button>
+
+                                </div>
+                                <div class="planTitle">{{ workoutPlan.workoutPlanTitle }}</div>
+                            </div> 
                             
-                            <button class="btn btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)"> Download PDF!</button>
+                    </uib-accordion-heading>
+                    <div class="accordionBody">
+                        <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
+                        <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
+                        <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
+                        <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
+                        <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
+                        <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
+                        <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
+                        <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
+                        <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
+                        <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
+                    </div>
+                    <!-- FLOW: call function in WorkoutPlansFactory that would get the plan from routes.js and send it back here -->
+                    
+                    
+                    </div>  
+                </uib-accordion>
 
-                        </div>
-                        <div class="planTitle">{{ workoutPlan.workoutPlanTitle }}</div>
-                        
-                   </uib-accordion-heading>
-                   <div class="accordionBody">
-                    <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
-                    <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
-                    <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
-                    <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
-                    <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
-                    <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
-                    <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
-                    <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
-                    <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
-                    <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
-                   </div>
-                   <!-- FLOW: call function in WorkoutPlansFactory that would get the plan from routes.js and send it back here -->
-                   
-                
-                </div>  
-            </uib-accordion>
-
-        </li>
-    </ul>
-
+            </li>
+        </ul>
+</div>

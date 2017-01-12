@@ -3,11 +3,27 @@ angular
     .factory('TagsFactory', ['ExercisesFactory', function(ExercisesFactory){
 
         //search tags and filter exercises
-        var bodyPartTags = ["chest", "back", "shoulders", "quads", "hamstrings", 
-                        "biceps", "triceps", "abs","glutes", "calves", "traps"];
+        // var bodyPartTags = ["chest", "back", "shoulders", "quads", "hamstrings", 
+        //                 "biceps", "triceps", "abs","glutes", "calves", "traps"];
         //separate in 2 arrays? : type and bodypart                
 
         var typeTags=["bodyweight", "weights", "mixed"];
+
+        var bodyPartTags = [];
+        var weightsExercisesByBodyPart =[];
+        function getBodyPartTags(){
+             ExercisesFactory.getTagData().then(function(tagsData){
+                 for(var i = 0; i < tagsData.length;i++){
+                     bodyPartTags.push(tagsData[i].tag);
+                 }
+
+                 //get weights exercises by tags
+                
+                 
+             });
+             return bodyPartTags;
+        }
+        getBodyPartTags();
 
          var weightsStr = typeTags[1];
          var weightsExercises =[];
@@ -31,45 +47,42 @@ angular
            // getExercises();
 
            
-           var weightsExercisesByBodyPart =[];
+          var selectedTags = [];
            function getWeightsExercisesByBodyPart(bodyPartsArr){ //arr b
                //alert(JSON.stringify(bodyPartsArr));
                //selectedBodyParts = bodyPartsArr.slice(0); //why not working push??
-               
-               ExercisesFactory.getData().then(function(data){
-                   //alert(JSON.stringify(data));
+              //alert(bodyPartsArr);
+            //   if (bodyPartsArr == undefined){
+            //       bodyPartsArr = [];
+            //   }
+              selectedTags.push(bodyPartsArr);
+              //console.log(bodyPartsArr.length);
+                ExercisesFactory.getData().then(function(exercisesData){
+                     //alert(JSON.stringify(exercisesData));
+                    for(var i = 0; i < exercisesData.length; i++){
+                        
+                        for (var j = 0; j < exercisesData[i].selectedExercises.tags.length; j++){
+                            //console.log(exercisesData[i].selectedExercises.tags[j]);
 
-                   var found = false;
-                   //console.log(bodyPartsArr[0]);
-                
-                   //console.log(Array.isArray(bodyPartsArr));
-                        //console.log('happening');
-                    for(var i=0; i< data.length; i++){
-                       
-                       for(var j=0; j< bodyPartsArr.length;j++){
-                           if (data[0].selectedExercises.tags.indexOf(JSON.stringify(bodyPartsArr[1])) > -1){
-                               console.log(data[i]);
-                               weightsExercisesByBodyPart.push(data[i]);
-                               found=true;
-                               break;
-                           }
-                       }
-                    }  
-                      //console.log(weightsExercisesByBodyPart);
-                    //console.log(weightsExercisesByBodyPart) ;
-                   // console.log(weightsExercisesByBodyPart);
-                   //console.log(data[0].selectedExercises.tags);
-               });
-
+                            for(var k = 0; k < bodyPartsArr.length; k++){
+                                if (exercisesData[i].selectedExercises.tags[j].match(bodyPartsArr[k])){
+                                    weightsExercisesByBodyPart.push(exercisesData[i]);
+                                }
+                            }
+                        }
+                    }
+                    //alert(JSON.stringify(weightsExercisesByBodyPart));
+                 })
+                 return weightsExercisesByBodyPart;
            }
-
+           //getWeightsExercisesByBodyPart();
 
 
            //get bodyPartTags
 
-           function getBodyPartTags(){
-               return bodyPartTags;
-           }
+        //    function getBodyPartTags(){
+        //        return bodyPartTags;
+        //    }
 
            
     // var getWeightsWxercises = function(weightsStr, $scope.exer ){

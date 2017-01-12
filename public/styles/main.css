@@ -55,20 +55,27 @@ label {
 .accordionHeading {
     background-color: #320000 ;
     color: #ffffff;
-    width: 24vw;
+    width: 35vw;
+    /*height: 10vh;*/
 }
 .accordionBody {
-    background-color: #d5d5d5;
+    background-color: #e5e5e5;
     color: #000000;
     padding: 20px;
     margin: -16px;
 }
+.container{
+    padding: 10px;
+    width: 100%;
+}
 #star{
     color: #fff200;
+    float: left;
 }
 .planTitle{
     text-align: center;
-    z-index: 999;
+    margin: 0 auto;
+    text-transform: uppercase;
 }
 
 .customButton{
@@ -81,4 +88,5 @@ label {
 .downloadPdf{
    margin-right: 10px;
    background-color: #cf0b0b;
+   float: right;
 }

@@ -23,6 +23,7 @@ angular.module('CreatePlanController', [])
                 $scope.selection = $scope.items[0];
             }
 
+            var partsString;
              $scope.loadWeightsForm =  function() {
                 $scope.bodyPartsSelected = true;
                 $scope.selection = $scope.items[1];
@@ -32,22 +33,20 @@ angular.module('CreatePlanController', [])
                 $scope.bodyPartTags = TagsFactory.getBodyPartTags();
                 //alert(JSON.stringify($scope.bodyPartTags));
                  
-                 $scope.weightsExercises = TagsFactory.getWeightsExercises();
+                 //$scope.weightsExercises = TagsFactory.getWeightsExercises();
                
+               //define bodyParts array
+               $scope.selectedBodyParts = [];
+                
                 $scope.bodyPartsChanged = function(bodyPartsArr){
                     //console.log(bodyPartsArr); //array of exercises
 
                    $scope.selectedBodyParts = bodyPartsArr;
+                   partsString =  $scope.selectedBodyParts.toString();
+                   //console.log(partsString);
 
-                   TagsFactory.getWeightsExercisesByBodyPart(bodyPartsArr);
-
-                //    console.log(JSON.stringify($scope.selectedBodyParts));
-                //     //only happen after body part selected
-                //    // $scope.weightsExercises = TagsFactory.getWeightsExercisesByBodyPart(bodyPartsArr);
-                //    console.log(JSON.stringify($scope.weightsExercises[0].selectedExercises.tags));
+                   $scope.weightsExercises = TagsFactory.getWeightsExercisesByBodyPart(bodyPartsArr);
                 }
-
-                //alert(JSON.stringify($scope.weightsExercises));
             }
              $scope.loadMixedForm =  function() {
                // $scope.mixedTemplate = $scope.templates[2];
@@ -58,20 +57,6 @@ angular.module('CreatePlanController', [])
                // $scope.mixedTemplate = $scope.templates[2];
                 $scope.selection = $scope.items[3];
             }
-
-
-            //get Exercises
-            // function getExercises(){
-            //      ExercisesFactory.getData().then(function(data){
-            //          $scope.exercises = data;
-            //      });
-            //     //alert(JSON.stringify($scope.exercises));
-            // }
-            // getExercises();
-
-
-
-            
 
             $scope.master = {};
 
@@ -86,19 +71,27 @@ angular.module('CreatePlanController', [])
                     $scope.user = angular.copy($scope.master);
                 };
 
+                $scope.selectedExercises = [];
                 $scope.save = function(workoutPlan, exerciseTitleObj){
-                        //alert(exerciseTitleObj);
-
+                        //alert(JSON.stringify($scope.selectedBodyParts));
+                        var bodyPartsString = $scope.selectedBodyParts.toString();
                         // if(authentication.isLoggedIn()){
 
                         // }    
-                
+                        for(var i = 0; i < exerciseTitleObj.length; i++){
+                            $scope.selectedExercises.push(exerciseTitleObj[i].selectedExercises.title)
+                        }
+                        
+                      
+                        var selectedExercisesString = $scope.selectedExercises.toString();
                         $scope.user = PassUserInfo.getUserInfo()
-
+                          //alert(selectedExercisesString);
                         
                          //alert(JSON.stringify($scope.user));
                          //TODO change to array
-                       workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
+                         workoutPlan.exerciseTitle = selectedExercisesString;
+                         workoutPlan.bodyPart = bodyPartsString;
+                      // workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
                         //alert(JSON.stringify(workoutPlan.exerciseTitle));
                         if(angular.isDefined($scope.user)){
                             workoutPlan.userName = $scope.user.name;
@@ -109,7 +102,7 @@ angular.module('CreatePlanController', [])
                         }
                        
 
-                    alert(JSON.stringify(workoutPlan));
+                    //alert(JSON.stringify(workoutPlan));
                     WorkoutPlansFactory.create(workoutPlan);
                 }
 
