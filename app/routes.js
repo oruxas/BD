@@ -163,6 +163,10 @@ var auth = jwt({
         }); //end update route
 
         //route to handle delete goes here (app.delete)
+        app.delete('/api/workoutPlans/:id', function(req, res){
+            console.log(req.body);
+            WorkoutPlan.find({_id:req.body._id}).remove().exec();
+        });
 
        //END PLANS ROUTES 
 

@@ -106,5 +106,7 @@ angular.module('CreatePlanController', [])
                     WorkoutPlansFactory.create(workoutPlan);
                 }
 
+                
+
                 $scope.reset();
         }])//comparing arrays;

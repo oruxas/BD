@@ -41,7 +41,24 @@ angular.module('MainController', [])
                     });
                 }
                
-            }   
+            }  
+
+            //only by admin;
+            $scope.delete = function($event, workoutPlanData){
+                if($event){
+                    $event.stopPropagation();
+                    $event.preventDefault();
+                    //alert($index);
+                    // alert(JSON.stringify(id));
+
+                    WorkoutPlansFactory.delete(workoutPlanData).then(function(data){
+                        console.log('deleted');
+                    });
+                }
+
+
+                    
+                } 
             
 
         }]);

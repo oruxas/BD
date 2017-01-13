@@ -30,7 +30,7 @@ angular.module('WorkoutPlansFactory', [])
                         //$scope.workoutPlan = {};
                         //$scope.scores = response;
                         console.log(JSON.stringify(response));
-        });
+                    });
                 }, //TODO:complete
                 update : function(workoutPlanData){
                     return $http({
@@ -43,12 +43,20 @@ angular.module('WorkoutPlansFactory', [])
                         //$scope.workoutPlan = {};
                         //$scope.scores = response;
                         console.log(JSON.stringify(response));
-        });
+                    });
                 },
 
                 //Call to DELETE workout plan
-                delete : function(id){
-                    return $http.delete('/api/workoutPlans' + id);
+                delete : function(workoutPlanData){
+                    alert(workoutPlanData);
+                    return $http({
+                        method: 'DELETE',
+                        url: '/api/workoutPlans/' + workoutPlanData._id,
+                        headers:  { 'Content-Type' : 'application/json' },
+                        data : workoutPlanData
+                    }).success(function(response){
+                        console.log(JSON.stringify(response));
+                    });
                 }
 
 
