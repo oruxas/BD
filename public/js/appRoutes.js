@@ -53,6 +53,11 @@ angular.module('appRoutes', [])
         controller: 'ProfileController',
         controllerAs: 'vm'
       })
+      .when('/admin', {
+        templateUrl: '/views/admin.html',
+        controller: 'ProfileController',
+        controllerAs: 'vm'
+      })
       .when('/logout', {
         templateUrl: '/views/home.html',
         controller: 'LogoutController'

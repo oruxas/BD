@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var user = require('../models/User');
 
 module.exports.profileRead = function(req, res) {
+  console.log(req.payload.role);
 
   if (!req.payload._id) {
     res.status(401).json({

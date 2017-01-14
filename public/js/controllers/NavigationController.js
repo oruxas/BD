@@ -10,6 +10,18 @@ angular.module('NavigationController', [])
     
      vm.currentUser = authentication.currentUser();
  
+     if(angular.isDefined(vm.currentUser)){
+       if(vm.currentUser.role =="admin"){
+        $location.path('/admin');
+      } else if(vm.currentUser.role == "guest" && vm.isLoggedIn){
+        $location.path('profile');
+      } else {
+        $location.path('/');
+      }
+    } else {
+      $location.path('/');
+    }
+
      
 
 

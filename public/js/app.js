@@ -7,7 +7,16 @@ angular.module('workoutPlansApp', ['ngRoute', 'appRoutes', 'MainController',
 
     .run( function($rootScope, $location, authentication){
         $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+             
             if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+                $location.path('/');
+            } 
+
+            if ($location.path() === '/admin' && !authentication.isLoggedIn() && !authentication.isAdmin()) {
+                alert('You are not an ADMIN');
+                $location.path('/');
+            } else if ( $location.path() === '/admin' && authentication.isLoggedIn() && !authentication.isAdmin()){
+                alert('You are not an ADMIN');
                 $location.path('/');
             }
         });

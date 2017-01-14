@@ -10,6 +10,15 @@ angular
         });
       };
 
+      // var getAdmin = function () {
+      //   console.log('meanData getAdmin happening');
+      //   return $http.get('/api/admin', {
+      //     headers: {
+      //       Authorization: 'Bearer '+ authentication.getToken()
+      //     }
+      //   });
+      // };
+
       var deleteProfile = function(){
         return $http.delete('/api/profile', {
           headers:{
@@ -20,6 +29,7 @@ angular
 
       return {
         getProfile : getProfile,
+        //getAdmin : getAdmin,
         deleteProfile : deleteProfile
       };
     }]);

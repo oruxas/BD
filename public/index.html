@@ -67,6 +67,7 @@
             <!--Links to log in/ register-->
             <li ng-hide="navvm.isLoggedIn"><a ng-href="login">Sign in</a></li>
             <li ng-show="navvm.isLoggedIn"><a ng-href="profile">{{navvm.currentUser.name }}</a></li>
+            <li ><a ng-href="admin">ADMIN</a></li> <!--ng-show="navvm.isAdmin"-->
             
            <!-- <li> <a href="/login"><span class="fa fa-user"></span> Local Login</a> </li>
             <li> <a href="/signup"><span class="fa fa-user"></span> Local Signup</a> </li>

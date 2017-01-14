@@ -16,11 +16,34 @@ angular.module('authentication',[])
         payload = token.split('.')[1];
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
-
+        //console.log(payload);
         return payload.exp > Date.now() / 1000;
       } else {
         return false;
       }
+    };
+
+    var isAdmin = function(){
+      if(isLoggedIn()){
+        var token = getToken();
+        var payload;
+
+        if(token){
+          payload = token.split('.')[1];
+          payload = $window.atob(payload);
+          payload = JSON.parse(payload);
+          //console.log(payload);
+          if(payload.role=="admin"){
+            return true; 
+          } else {
+            return false
+          };
+          
+        } else {
+          return false;
+        }
+      }
+      
     };
 
     var currentUser = function() {
@@ -60,6 +83,7 @@ angular.module('authentication',[])
       saveToken : saveToken,
       getToken : getToken,
       isLoggedIn : isLoggedIn,
+      isAdmin : isAdmin,
       register : register,
       login : login,
       logout : logout
