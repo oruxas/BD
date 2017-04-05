@@ -33,6 +33,11 @@
     <script src="js/services/authentication.js"></script>
     <script src="js/controllers/WorkoutPlansController.js"></script>
     <script src="js/controllers/CreatePlanController.js"></script>
+
+    <script src="js/controllers/BodyweightFormController.js"></script>
+    <script src="js/controllers/WeightsFormController.js"></script>
+    <script src="js/controllers/MixedFormController.js"></script>
+
     <script src="js/controllers/CreateExerciseController.js"></script>
 
     <!--authentication-->
@@ -48,7 +53,7 @@
     
 </head>
 <body ng-app="workoutPlansApp" ng-controller="MainController">
-<div  ng-controller="NavigationController as navvm ">
+<div  ng-controller="NavigationController as vm">
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse customNavbar" >
@@ -65,23 +70,31 @@
             
 
             <!--Links to log in/ register-->
-            <li ng-hide="navvm.isLoggedIn"><a ng-href="login">Sign in</a></li>
-            <li ng-show="navvm.isLoggedIn"><a ng-href="profile">{{navvm.currentUser.name }}</a></li>
+
+            
+           <!--<li class="pull-right"> <a href="/profile">{{navvm.currentUser.name }} </a></li>-->
+            <li ng-hide="vm.isLoggedIn "><a ng-href="/login">Sign in</a></li>
+            <li ng-show="vm.isLoggedIn"><a ng-href="/profile">{{vm.currentUser.name }}</a></li>
             <li ><a ng-href="admin">ADMIN</a></li> <!--ng-show="navvm.isAdmin"-->
             
-           <!-- <li> <a href="/login"><span class="fa fa-user"></span> Local Login</a> </li>
-            <li> <a href="/signup"><span class="fa fa-user"></span> Local Signup</a> </li>
-
-             <li> <a href="/profile"><span class="fa fa-user"></span> Profile</a> </li>-->
+          
 
         </ul>
       
     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div class="container">
+    <div >
         <div ng-view></div>
     </div>
+
+    <!--FOOTER-->
+    <footer class=" footerStyle">
+        <div class="navbar">
+            <p class="navbar-text">text test</p>
+        </div>
+        
+    </footer>
 
 </div>
 </body>

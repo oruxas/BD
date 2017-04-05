@@ -1,6 +1,6 @@
 // public/js/app.js
 angular.module('workoutPlansApp', ['ngRoute', 'appRoutes', 'MainController', 
-'WorkoutPlansController', 'CreatePlanController', 'WorkoutPlansFactory', 
+'WorkoutPlansController', 'CreatePlanController', 'BodyweightFormController', 'WeightsFormController', 'MixedFormController', 'WorkoutPlansFactory', 
 'NavigationController', 'LoginController', 'RegisterController', 'ProfileController', 
 'authentication', 'meanData', 'LogoutController', 'CreateExerciseController',
  'ExercisesFactory', 'PassUserInfo', 'TagsFactory', 'ui.bootstrap'])

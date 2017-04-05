@@ -5,25 +5,27 @@
 
 
         <!--USER CHOSES BODYWEIGHT, THEN THIS FORM IS LOADED. OTHER FORMS FOR WEIGHTS AND MIXED THIS EXAMPLE ONLY FOR BODYWEIGHT -->
-
-         <div ng-switch on="selection">
+       <div class="planType">
+           <a href="/bodyweightForm"> <button class="createPlanButton" > Bodyweight</button> </a><br />
+           <a href="/weightsForm"> <button class="createPlanButton"  >Weights</button></a> <br />
+            <a href="/mixedForm"><button class="createPlanButton"> Mixed</button></a>
+         <!--<div ng-switch on="selection">
           <div ng-switch-when="bodyweightForm"> 
             <div ng-include="'/views/forms/bodyweightForm.html'"></div><br />
-            <button class="btn customButton" ng-model="buttons" ng-click="loadDefault()">Back</button>
+            <button class="btn customButton customBackButton" ng-model="buttons" ng-click="loadDefault()">Back</button>
           </div>
           <div ng-switch-when="weightsForm"> 
             <div ng-include="'/views/forms/weightsForm.html'"></div><br />
-            <button class="btn customButton" ng-model="buttons" ng-click="loadDefault()">Back</button> 
+            <button class="btn customButton customBackButton" ng-model="buttons" ng-click="loadDefault()">Back</button> 
           </div>
           <div ng-switch-when="mixedForm"> 
             <div ng-include="'/views/forms/mixedForm.html'"></div><br />
-            <button class="btn customButton" ng-model="buttons" ng-click="loadDefault()">Back</button>
+            <button class="btn customButton customBackButton" ng-model="buttons" ng-click="loadDefault()">Back</button>
           </div>
           <div ng-switch-default>
-              <button class="btn customButton" ng-model="items[0]" ng-click="loadBodyweightForm()">Bodyweight</button><br />
-              <button class="btn customButton" ng-model="items[1]" ng-click="loadWeightsForm()">Weights</button><br />
-              <button class="btn customButton" ng-model="items[2]" ng-click="loadMixedForm()">Mixed</button><br />  
+             
           </div>   
-         </div> 
+         </div> -->
+      </div>
 </div>
 

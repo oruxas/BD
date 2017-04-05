@@ -5,7 +5,7 @@
           var vm = this;                          
     // meanData.deleteProfile();
      
-      $location.path('/');
+      //$location.path('/');
       authentication
         .logout();
 

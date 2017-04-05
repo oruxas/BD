@@ -45,7 +45,7 @@ angular.module('CreateExerciseController', [])
 
                     exercise.tags =  $scope.tagsArr;
                     alert(JSON.stringify(exercise));
-                    //ExercisesFactory.create(exercise);
+                    ExercisesFactory.create(exercise);
                     $scope.exerciseForm.$setPristine();
                     $scope.exercise = {};
                    

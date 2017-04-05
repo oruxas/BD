@@ -1,25 +1,28 @@
 angular.module('MainController', [])
-        .controller('MainController', ['$scope', '$http', 'WorkoutPlansFactory',  
-                                    function($scope, $http, WorkoutPlansFactory){
+        .controller('MainController', ['$scope', '$http', 'WorkoutPlansFactory', 'authentication',  
+                                    function($scope, $http, WorkoutPlansFactory, authentication){
 
             $scope.tagline = "Should there be a list to pick workout immediately? Or two choices: \"Search for Plan\" and \"Create Plan\" ";
             
             $scope.oneAtATime = true; 
+            
+            //console.log('Served by: ', process.env.PORT);
+        
 
             WorkoutPlansFactory.get().then(function(result){
-                console.log(JSON.stringify(result.data));
+               // console.log(JSON.stringify(result.data));
                 
                    //alert(JSON.stringify(result.data)); 
                 $scope.workoutPlans = result.data;
                 
          });
 
-            $scope.addUpvote = function($event, workoutPlan){
+            $scope.addUpvote = function(workoutPlan){
                 //TODO: upvote functionality
-                if($event){
-                    $event.stopPropagation();
-                    $event.preventDefault();
-                }
+                // if($event){
+                //     $event.stopPropagation();
+                //     $event.preventDefault();
+                // }
                 //alert(JSON.stringify(workoutPlan));
                 //upvotes++;
                    workoutPlan.upvotes++;

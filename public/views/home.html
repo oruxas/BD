@@ -1,48 +1,89 @@
 <!-- public/views/home.html -->
 
-<div class="text-center">
-    <h1>Geriausi sporto planai</h1>
 
-    <h4>Nerandi? <a href="/createPlan"> Spausk Čia  </a> ir susikurk savo! </h4>
+<div class="container">
 
-</div>
 
-<div class="row">
-    <ul ng-model="workoutPlans" >
-            <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'" style="display:inline;"> 
+    <div class="row homeHeaderSection">
+        <div class="text-center">
+                <h1 class="headerText" id="headerText">Susikurk asmeninį treniruočių planą</h1>
 
-                <uib-accordion close-others="oneAtATime">
-                    <div uib-accordion-group class="accordionHeading" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                    <uib-accordion-heading >
-                            <div class="container"> 
-                                <div id="star" ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star" ></i> {{workoutPlan.upvotes}}</div>
-                                <div >
-                                    
-                                    <button class="btn btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)"> Download PDF!</button>
-                                    <button class="btn btn-xs downloadPdf" ng-click="delete($event, workoutPlan)"> DELETE!</button>        
-                                </div>
-                                <div class="planTitle">{{ workoutPlan.workoutPlanTitle }}</div>
-                            </div> 
-                            
-                    </uib-accordion-heading>
-                    <div class="accordionBody">
-                        <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
-                        <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
-                        <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
-                        <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
-                        <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
-                        <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
-                        <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
-                        <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
-                        <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
-                        <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
+                <h4 class="subHeaderText">Nežinai kur pradėti? Neturi laiko? pasižiūrėk į kitų sukurtus planus</h4>
+                <!--<h4 class="innerHeaderText">Nerandi? <a class="goToCreate" href="/createPlan"> Spausk Čia  </a> ir susikurk savo! </h4>-->
+        </div>
+        <div >
+           <a href="/createPlan"> <button class="startButton"> Kurti planą </button></a>
+        </div>
+    </div>
+
+    <div class="row homeBodyweightSection">
+        <div class="col-md-12">
+             <div class="row text-center">
+                <h1 class="headerText" id="bodyweightHeaderText">Treniruočių Planas Tik Su Kūno Svoriu</h1>
+
+                <h4 class="subHeaderText">Treniruokis bet kur ir bet kada! </h4>
+
+                 <div class="col-md-6">
+                    <p class="articleText">
+                        Neturi laiko važinėti į sporto salę? Galbūt nenori mokėti už abonementą? </br>
+                        Ar tieiog patinka galimybė sportuoti kur nori, kada nori ir nelaukti eilių </br>
+                        prie treniruoklių? Tuomet susikurk treniruočių planą su pratimaias </br>
+                        reikalaujančiais tik jūsų kūno.
+                    </p>
+                    <a href="/createPlan"><button class="createPlanHomeButton pull-left">Kurti planą </button></a>
+                </div>
+                <div class="col-md-6 pull-right">
+                   <img id="bodyweightImage" src="https://preview.ibb.co/doYoOv/pullup_1.png" alt="bodyweight image">
+                </div>
+            </div>   
+        </div>
+           
+    </div>
+
+
+      <div class="row homeWeightsSection">
+          <div class="col-md-12">         
+            <div class="row text-center">
+                    <h1 class="headerText" id="weightsHeaderText">Treniruočių Planas paremtas svoriais</h1>
+
+                    <h4 class="subHeaderText">Pridėk svoris ir išplėsk savo galimybes! </h4>
+
+                    <div class="col-md-6">
+                        <p class="articleText">
+                            Neturi laiko važinėti į sporto salę? Galbūt nenori mokėti už abonementą? </br>
+                            Ar tieiog patinka galimybė sportuoti kur nori, kada nori ir nelaukti eilių </br>
+                            prie treniruoklių? Tuomet susikurk treniruočių planą su pratimaias </br>
+                            reikalaujančiais tik jūsų kūno.
+                        </p>
+                        <a href="/createPlan"><button class="createPlanHomeButton pull-left">Kurti planą </button></a>
                     </div>
-                    <!-- FLOW: call function in WorkoutPlansFactory that would get the plan from routes.js and send it back here -->
-                    
-                    
-                    </div>  
-                </uib-accordion>
+                    <div class="col-md-6 pull-right">
+                        <img id="weightImg"  src="https://preview.ibb.co/hdBdov/weight_lifting.png" alt="weight image" >
+                    </div>
+            </div>  
+        </div>     
+    </div>
+                       
 
-            </li>
-        </ul>
+    <div class="row homeBottomSection text-center">
+         <div class="col-md-12">         
+           
+                    <h1 class="headerText" id="weightsHeaderText">Kitų sukurti treniruočių planai</h1>
+
+                    <h4 class="subHeaderText">Pridėk svoris ir išplėsk savo galimybes! </h4>
+
+                    
+                        <p class="articleBottomText">
+                            Neturi laiko važinėti į sporto salę? Galbūt nenori mokėti už abonementą? </br>
+                            Ar tieiog patinka galimybė sportuoti kur nori, kada nori ir nelaukti eilių </br>
+                            prie treniruoklių? Tuomet susikurk treniruočių planą su pratimaias </br>
+                            reikalaujančiais tik jūsų kūno.
+                           
+                        </p>
+                        
+                    <a href="/workoutPlans"><button class="findPlansButton">Ieškoti planų </button></a>
+                   
+            
+        </div>     
+    </div>
 </div>

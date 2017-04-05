@@ -1,6 +1,6 @@
   angular.module('ProfileController', [])
-    .controller('ProfileController', ['$scope', '$location', 'meanData', 'authentication', 'WorkoutPlansFactory', 
-                function($scope, $location, meanData, authentication, WorkoutPlansFactory){
+    .controller('ProfileController', ['$scope', '$location', 'meanData', 'authentication', 'WorkoutPlansFactory', 'PassUserInfo', 
+                function($scope, $location, meanData, authentication, WorkoutPlansFactory, PassUserInfo){
     var vm = this;
 
     
@@ -13,7 +13,7 @@
       .success(function(data) {
         //alert(JSON.stringify(data));
         vm.user = data;     
-        
+
         //alert(JSON.stringify(vm.user)); 
         console.log('success')
         WorkoutPlansFactory.getWithEmail(vm.user.email).then(function(result){

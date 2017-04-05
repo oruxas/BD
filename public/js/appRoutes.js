@@ -21,6 +21,20 @@ angular.module('appRoutes', [])
             controller: 'CreatePlanController' 
         
         })
+
+        /*plan forms*/
+        .when('/weightsForm', {
+            templateUrl: '/views/forms/weightsForm.html',
+            controller: 'WeightsFormController'
+        })
+        .when('/bodyweightForm', {
+            templateUrl: '/views/forms/bodyweightForm.html',
+            controller: 'BodyweightFormController'
+        })
+        .when('/mixedForm', {
+            templateUrl: '/views/forms/mixedForm.html',
+            controller: 'MixedFormController'
+        })
         // .when('/updatePlan/:id', {
         //     templateUrl: 'views/createPlan.html',
         //     controller: 'CreatePlanController' 

@@ -16,8 +16,11 @@
           alert(JSON.stringify(err));
         })
         .then(function(){
-          $location.path('profile');
 
+         // $rootScope.$broadcast('userLoggedIn');
+          $window.location.reload();
+          $location.path('profile');
+          
           console.log('replace profile happening');
           
         });

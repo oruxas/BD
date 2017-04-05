@@ -1,22 +1,87 @@
-<!-- public/views/workoutPlans.html -->
+<!--<div class="container-fluid">
+   <ul ng-model="workoutPlans" style="display: inline">
+                <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'" > 
 
-<div class="jumbotron text-center" ng-controller="WorkoutPlansController">
-    <h1>This is example</h1>
+                    <uib-accordion close-others="oneAtATime">
+                        <div uib-accordion-group class="accordionHeading" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                        <uib-accordion-heading >
+                                <div class="row accordionWidth">
+                                    <div class="col-md-2">
+                                        <div id="star" ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star" ></i> {{workoutPlan.upvotes}}</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="planTitle">{{ workoutPlan.workoutPlanTitle }}</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class=" btn btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)">  PDF!</button>
+                                        <button class=" btn btn-xs downloadPdf" ng-click="delete($event, workoutPlan)"> Trinti</button>
+                                    </div>   
+                                </div>
+                           
+                    
+                        </uib-accordion-heading>
+                        <div class="accordionBody">
+                            <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
+                            <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
+                            <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
+                            <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  
+                            <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}} </p> <br /> 
+                            <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
+                            <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
+                            <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
+                            <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
+                            <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
+                        </div>
+                    
+                        </div>  
+                    </uib-accordion>
 
-    <p>{{ tagline }}</p>
+                </li>
+            </ul>
+</div>-->
 
-    <ul ng-model="workoutPlans">
-        <li ng-repeat="workoutPlan in workoutPlans"> 
+<!--NEW Verson-->
+<div class="container">
+        <ul class="list-inline" ng-model="workoutPlans">
+            <li  ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'">
+               <div class="listPlan">
+                    <div class="row planTitle">
+                    
+                            <div id="star" ng-click="addUpvote( workoutPlan)"><i class="fa fa-star" ></i> {{workoutPlan.upvotes}}</div>
+                        
+                            <div>{{ workoutPlan.workoutPlanTitle }}</div>
+                        
+                            
+                    
+                    </div>
+                    <div class="row">
+                        <div >
+                        <p class="planText"> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} "  <br />
+                        "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} <br />
+                        "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}}  <br />
+                        "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}}  <br />  
+                        "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}}  <br /> 
+                        "Pasirinkti setai: "{{workoutPlan.sets}}  <br /> 
+                        "Pasirinkti pakartojimai: " {{workoutPlan.reps}}  <br />
+                        "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} <br />
+                        "Sukurta: " {{workoutPlan.userName}}  <br />
+                        "Kontaktai: " {{workoutPlan.userEmail}} </p>  
+                    </div>
+                </div><!-- End row-->
+                <div class="row">
+                    <div class="col-md-12 center-block">
+                        <button class=" downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)">  PDF!</button>
+                    </div>
+                    <!--<div class="col-md-6">
+                        <button class=" downloadPdf" ng-click="delete($event, workoutPlan)"> Trinti</button>
+                    </div>-->
 
-            <uib-accordion close-others="oneAtATime">
-                <div uib-accordion-group class="panel-default" heading="{{ workoutPlan.workoutPlanTitle }}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                    {{workoutPlans}}
-                </div>  
-            </uib-accordion>
+                    
+                </div>
+                </div> <!--End container-->
 
-        </li>
-    </ul>
+            </li>
 
- 
+        </ul>
 
 </div>

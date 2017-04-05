@@ -31,70 +31,19 @@ var User = require('./app/models/User')
 //var User = require('./app/models/user');
 var userConfig = require('./app/config/passport');
 
-
-
-
-//create new model 
-/*var newWorkoutPlan = WorkoutPlan({
-    userId : 1,
-        userEmail : "evaldaskal@gmail.com",
-        userPassword : "admin123",
-        workoutPlanTitle : "testPlan",
-            workoutType : {
-                bodyweight: {   totalDuration : 3, 
-                                daysPerWeek : 3, 
-                                bodyPart : "chest", 
-                                selectedExercise : "pushups", 
-                                sets : 5, 
-                                reps : 15,
-                                restTime : 3
-                            },
-                weights: {      totalDuration : 3, 
-                                daysPerWeek : 3, 
-                                bodyPart : "chest", 
-                                selectedExercise : "pushups", 
-                                sets : 5, 
-                                reps : 15,
-                                restTime : 3
-                            },
-                mixed: {        totalDuration : 3, 
-                                daysPerWeek : 3, 
-                                bodyPart : "chest", 
-                                selectedExercise : "pushups", 
-                                sets : 5, 
-                                reps : 15,
-                                restTime : 3
-                            }
-            } //end workoutType
-});*/
-
 //port set up
-var port = process.env.PORT || 8080;
+var port = process.argv[2] || 8080;
+//var port = process.env.PORT || 8080;
 
 //uncomment after entering credentials in config/db.js
 mongoose.connect(db.url);
 console.log('Prisijungta prie db!');
 
-
-
-//save workoutPlan:
-// newWorkoutPlan.save(function(err){
-//     if(err) throw err;
-//     console.log('Workout Plan Created!');
-
-//         //find and console.log all plans, cuz of asynch behavior
-//         WorkoutPlan.find({}, function(err, workoutPlans){
+// WorkoutPlan.find({}, function(err, workoutPlans){
 //             if (err) throw err;
 
 //             console.log(JSON.stringify(workoutPlans));
 //         });
-
-// });
-WorkoutPlan.find({}, function(err, workoutPlans){
-            if (err) throw err;
-
-            console.log(JSON.stringify(workoutPlans));
-        });
 
 
 app.use(morgan('dev')); //log requests to console
@@ -127,12 +76,7 @@ app.use(passport.session()); // persistent login sessions
         done(null, user.id);
     });
 
-    // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
-    });
+    
 
 
 //define backend routes
@@ -141,7 +85,12 @@ app.get('/logout', function(req, res){
             req.logout();
             res.redirect('/');
         });
-
+// used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
 
 
 //ROUTES ===========================================================================
@@ -150,8 +99,15 @@ require('./app/routes')(app); //configure routes ; load routes and pass in app a
 //support page refresh, move to routes.js
 app.use(function(req, res) {
             res.sendfile(__dirname + '/Public/index.html');
-});    
+});   
 
+app.get("/", function(request,response)
+        {
+           console.log("You have been served by: ",name,"on",PORT);
+ 
+           response.write("Served by :"+name+" on "+PORT);
+           response.end();
+        });
 //START APP ========================================================================
 
 //startup our app at http http://localhost:8080
