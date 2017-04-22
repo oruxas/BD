@@ -11,11 +11,18 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
+//for sockets
+var http = require('http');
+var socketIO = require('socket.io');
 
 var morgan = require('morgan');
 //var flash = require('connect-flash');
 
-//configuration
+//SOCKETS
+var server = http.createServer(app);
+var io = socketIO(server);
+
+http.createServer(app)
 
 //config files
 //require file with real credentials
@@ -108,15 +115,29 @@ app.get("/", function(request,response)
            response.write("Served by :"+name+" on "+PORT);
            response.end();
         });
+
+//SOCKETS =========================================================================
+io.on('connection', (socket)=>{
+    console.log('new user connected');
+
+    socket.on('disconnect', ()=>{
+        console.log('Client disconnected');
+    });
+});
+
+
+
 //START APP ========================================================================
 
 //startup our app at http http://localhost:8080
-app.listen(port);
+//app.listen(port);
+server.listen(port, ()=>{
+    //checking
+    console.log('Prisijunges prie port\'o: ' + port);   
+});
 
 
 
-//checking
-console.log('Prisijunges prie port\'o: ' + port);
 
 //expose appexports = module.exports = app
 
