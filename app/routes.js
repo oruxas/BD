@@ -1,15 +1,22 @@
 // grab the model
 
+var _ = require('lodash');
+
 var WorkoutPlan = require('./models/workoutPlan');
 var Exercise = require('./models/exercises');
 var Tag = require('./models/tags');
-//var User = require('../app/models/user');
+
+var User = require('../app/models/User');
 var passport = require('passport');
 var express = require('express');
 var router = express.Router();
 
 var fileUrl = require('file-url');
 var fs = require('fs');
+
+//for info
+var seaport = require('seaport');
+var ports = seaport.connect('localhost', 9090);
 
 //for pdf generation
 //node-render module for pdf generation
@@ -18,11 +25,12 @@ var open = require('open');
 
 var jwt = require('express-jwt');
 var auth = jwt({
-  secret: 'MY_SECRET',
+  secret: 'abc123',
   userProperty: 'payload'
 });
 
 
+var port = process.argv[2] || 18070;
 
     module.exports = function(app){
         //server routes 
@@ -31,7 +39,11 @@ var auth = jwt({
         
 
         //sample routes
+      
         app.get('/api/workoutPlans', function(req, res){
+            console.log(req.socket.address().port);
+            //console.log('Served by: ' , ports.query('server').shift().port);
+
             // using mongoose to get all plans in the db:
             WorkoutPlan.find(function(err, workoutPlans){
                 //check for errors, nothing after res.send(err) gets executed
@@ -46,7 +58,8 @@ var auth = jwt({
            app.get('/api/workoutPlan/:id', function(req, res){
             // using mongoose to get all plans in the db:
            // alert(JSON.stringify(req.params.id));
-           console.log(JSON.stringify(req.params.id));
+          
+          // console.log(JSON.stringify(req.params.id));
             var planId = req.params.id;
             WorkoutPlan.findOne({_id: req.params.id},function(err, workoutPlan){
                 console.log('ID is: '+ planId);
@@ -102,6 +115,7 @@ var auth = jwt({
         app.get('/api/workoutPlans/:email', function(req, res){
             // using mongoose to get all plans in the db:
             //console.log(req.params.email);
+           console.log(req.socket.address().port);
             var email = req.params.email;
             WorkoutPlan.find({userEmail: email},function(err, workoutPlans){
                 //console.log('Email is: '+email);
@@ -120,7 +134,7 @@ var auth = jwt({
         //route to handle creating goes here (app.post)
         app.post('/api/workoutPlans', function (req, res){
             console.log(req.body);
-           
+          
            var newPlan =  new WorkoutPlan({
         userName : req.body.userName,
         userEmail : req.body.userEmail,
@@ -164,6 +178,7 @@ var auth = jwt({
 
         //route to handle delete goes here (app.delete)
         app.delete('/api/workoutPlans/:id', function(req, res){
+            
             console.log(req.body);
             WorkoutPlan.find({_id:req.body._id}).remove().exec();
         });
@@ -173,6 +188,7 @@ var auth = jwt({
        //EXERCISES ROUTES
 
         app.get('/api/exercises', function(req, res){
+            
             // using mongoose to get all plans in the db:
            Exercise.find(function(err, exercises){
                 //check for errors, nothing after res.send(err) gets executed
@@ -187,7 +203,7 @@ var auth = jwt({
         //route to handle creating goes here (app.post)
         app.post('/api/exercises', function (req, res){
             console.log('post happening');
-           
+          
            var newExercise =  new Exercise({
         selectedExercises : {                       //not needed?
                         title : req.body.title,
@@ -250,12 +266,13 @@ var auth = jwt({
 
         //AUTHENTICATION ROUTES
 
-        var ctrlProfile = require('../app/controllers/profile');
-        var ctrlAuth = require('../app/controllers/authentication');
+        var ctrlProfile = require('../app/middleware/profile');
+        var ctrlAuth = require('../app/middleware/authentication');
 
         
 
         // authentication
+        
         app.post('/api/register', ctrlAuth.register);
         app.post('/api/login', ctrlAuth.login);
 
@@ -263,9 +280,6 @@ var auth = jwt({
        app.get('/api/profile', auth, ctrlProfile.profileRead);
 
        app.get('/logout', ctrlAuth.logout);
-        
-
-       
         // frontend routes
         
         //route to handle all angular requests

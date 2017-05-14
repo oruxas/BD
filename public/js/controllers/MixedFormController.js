@@ -1,7 +1,7 @@
 angular.module('MixedFormController', [])
         .controller('MixedFormController', ['$scope', 'WorkoutPlansFactory', 
-                    'ExercisesFactory', 'authentication', 'PassUserInfo', 'TagsFactory',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo, TagsFactory){
+                    'ExercisesFactory',/* 'authentication', 'PassUserInfo',*/ 'TagsFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory,/* authentication, PassUserInfo,*/ TagsFactory){
             
             $scope.exerciseForm = false;
 

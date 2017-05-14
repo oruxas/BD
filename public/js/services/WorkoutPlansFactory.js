@@ -4,6 +4,7 @@ angular.module('WorkoutPlansFactory', [])
             //interface
             return {
                     // call to get all workout Plans
+
                     get : function(){
                         return $http.get('/api/workoutPlans');
                     },

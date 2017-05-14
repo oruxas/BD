@@ -1,11 +1,11 @@
  angular.module('LogoutController', [])
-  .controller('LogoutController', ['$scope', '$location', '$window', 'meanData', 'authentication', 
-                                  function($scope, $location, $window, meanData, authentication){
+  .controller('LogoutController', ['$scope', '$location', '$window', 'authentication',
+                                  function($scope, $location, $window, authentication){
    
           var vm = this;                          
     // meanData.deleteProfile();
      
-      //$location.path('/');
+      $location.path('/');
       authentication
         .logout();
 

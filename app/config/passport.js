@@ -28,4 +28,3 @@ passport.use(new LocalStrategy({
   }
 ));
 
-

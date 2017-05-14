@@ -1,7 +1,7 @@
 angular.module('BodyweightFormController', [])
         .controller('BodyweightFormController', ['$scope', 'WorkoutPlansFactory', 
-                    'ExercisesFactory', 'authentication', 'PassUserInfo', 'TagsFactory',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo, TagsFactory){
+                    'ExercisesFactory', 'TagsFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory, TagsFactory){
 
         var partsString;
           //  $scope.loadBodyweightForm =  function() {

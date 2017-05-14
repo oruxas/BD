@@ -9,6 +9,7 @@ angular.module('workoutPlansApp', ['ngRoute', 'appRoutes', 'MainController',
         $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
              
             if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+                alert('error, redirecting');
                 $location.path('/');
             } 
 

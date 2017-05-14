@@ -16,11 +16,11 @@
           alert(JSON.stringify(err));
         })
         .then(function(){
-
+          alert(JSON.stringify('Login Controller ' + vm.credentials));
          // $rootScope.$broadcast('userLoggedIn');
-          $window.location.reload();
+        
           $location.path('profile');
-          
+           $window.location.reload();
           console.log('replace profile happening');
           
         });

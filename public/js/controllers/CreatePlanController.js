@@ -1,7 +1,7 @@
 angular.module('CreatePlanController', [])
         .controller('CreatePlanController', ['$scope', 'WorkoutPlansFactory', 
-                    'ExercisesFactory', 'authentication', 'PassUserInfo', 'TagsFactory',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo, TagsFactory){
+                    'ExercisesFactory', 'TagsFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory, TagsFactory){
             
             $scope.exerciseForm = false;
 
@@ -62,7 +62,7 @@ angular.module('CreatePlanController', [])
                         
                       
                         var selectedExercisesString = $scope.selectedExercises.toString();
-                        $scope.user = PassUserInfo.getUserInfo()
+                        //$scope.user = PassUserInfo.getUserInfo()
                           //alert(selectedExercisesString);
                         
                          //alert(JSON.stringify($scope.user));

@@ -1,7 +1,7 @@
 angular.module('WeightsFormController', [])
         .controller('WeightsFormController', ['$scope', 'WorkoutPlansFactory', 
-                    'ExercisesFactory', 'authentication', 'PassUserInfo', 'TagsFactory',  
-            function ($scope, WorkoutPlansFactory, ExercisesFactory, authentication, PassUserInfo, TagsFactory){
+                    'ExercisesFactory', 'TagsFactory',  
+            function ($scope, WorkoutPlansFactory, ExercisesFactory, TagsFactory){
             
             $scope.exerciseForm = false;
 
