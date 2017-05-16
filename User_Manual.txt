@@ -6,14 +6,14 @@ MKDf-13/3 Evaldo Kalasuno Bakalaurinis darbas
 
 2. Duomenø bazës paleidimas:
 	2.1 Suinstaliuoti MongoDB.
-	2.2 Reikalinga direktorijia (folder), kurioje bus talpinami duomenys.
+	2.2 Reikalinga direktorijia (folder), kurioje bus talpinami duomenys. (ðiuo metu duomenø bazei priskirta direktorija BD/mongo-data)
 	2.3 Atidaryti shell/commandPrompt langà. 
 	2.4 Naviguoti á MongoDB "bin" direktorijà , turëtø bûti kur suinstaliavote MongoDB: C:\Program Files\MongoDB\Server\3.4\bin
-	2.5 Paleiskite programà mongod.exe --dbpath C:/kelias/iki/2.2/punkte/sukurtos/direktorijos
+	2.5 Paleiskite programà mongod.exe --dbpath C:/kelias/iki/2.2/punkte/sukurtos/direktorijos (galima iki BD/mongo-data)
 
 3. Aplikacijos paleidimas
 	3.1 Suinstaliuoti NodeJs.
-	3.2 Atsidarius atskirà shell/commandPrompt naviguoti á aplikacijos direktorijà
+	3.2 Atsidarius atskirà shell/commandPrompt naviguoti á aplikacijos direktorijà 
 	3.3 Paleisti: npm install --save
 	3.4 Paleisti: npm install seaport  (suinstaliuos seaport modulá, reikalingà port'ø klausymui globaliai)
 	3.5 Esamam shell paleisti komandà: seaport listen 9090    
