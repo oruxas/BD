@@ -17,18 +17,8 @@ var seaport = require('seaport');
 var ports = seaport.connect('localhost', 9090);
 //var args = process.argv.splice(2);
 
-//for sockets
-// var http = require('http');
-// var socketIO = require('socket.io');
-
 var morgan = require('morgan');
 //var flash = require('connect-flash');
-
-//SOCKETS
-// var server = http.createServer(app);
-// var io = socketIO(server);
-
-// http.createServer(app)
 
 //config files
 //require file with real credentials
@@ -51,16 +41,9 @@ mongoose.connect(db.url, ()=>{
 });
 
 
-// WorkoutPlan.find({}, function(err, workoutPlans){
-//             if (err) throw err;
-
-//             console.log(JSON.stringify(workoutPlans));
-//         });
-
 //LOG RWEQUESTS TO CONSOLE
 //app.use(morgan('dev')); //log requests to console
 
-//get all data/stuff of the body (POST) parameters
 //parse application/json
 
 app.use(bodyParser.json());
@@ -73,13 +56,10 @@ app.use(bodyParser.urlencoded({ extended: true}));
 //override with the X-HTTP-Methd-Override header in the request.  simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
 
-// [SH] Use the API routes when path starts with /api
-//app.use('/api', routesApi);
 
 // required for passport
-//app.use(session({ secret: 'MY_SECRET', resave: false, saveUninitialized: false } )); // session secret
 app.use(passport.initialize());
-//app.use(passport.session()); // persistent login sessions
+
 
 
 
@@ -115,16 +95,6 @@ app.use(function(req, res) {
             res.sendfile(__dirname + '/Public/index.html');
 });  
 
-
-
-//SOCKETS =========================================================================
-// io.on('connection', (socket)=>{
-//     console.log('new user connected');
-
-//     socket.on('disconnect', ()=>{
-//         console.log('Client disconnected');
-//     });
-// });
 
 
 

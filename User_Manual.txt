@@ -1,0 +1,24 @@
+MKDf-13/3 Evaldo Kalasuno Bakalaurinis darbas
+
+1. Reika turëti NodeJs platformà bei MongoDB duomenø bazæ;
+	NodeJs galima parsisiøsti ið èia: https://nodejs.org/en/download/
+	MongoDB galima parsisiøsti ið èia: https://www.mongodb.com/download-center#community
+
+2. Duomenø bazës paleidimas:
+	2.1 Suinstaliuoti MongoDB.
+	2.2 Reikalinga direktorijia (folder), kurioje bus talpinami duomenys.
+	2.3 Atidaryti shell/commandPrompt langà. 
+	2.4 Naviguoti á MongoDB "bin" direktorijà , turëtø bûti kur suinstaliavote MongoDB: C:\Program Files\MongoDB\Server\3.4\bin
+	2.5 Paleiskite programà mongod.exe --dbpath C:/kelias/iki/2.2/punkte/sukurtos/direktorijos
+
+3. Aplikacijos paleidimas
+	3.1 Suinstaliuoti NodeJs.
+	3.2 Atsidarius atskirà shell/commandPrompt naviguoti á aplikacijos direktorijà
+	3.3 Paleisti: npm install --save
+	3.4 Paleisti: npm install seaport  (suinstaliuos seaport modulá, reikalingà port'ø klausymui globaliai)
+	3.5 Esamam shell paleisti komandà: seaport listen 9090    
+	3.6 Atsidaryti dar vienà shell/commandPrompt ir naviguoti á folderá bei paleisti node loadBalancer
+	3.7 Galima atsidaryti narðyklæ ir nuëjus á localhost:18070 turëtø raðyti, kad service unavailable
+	3.8 Reikia atsidaryti dar vienà shell/commandPrompt, naviguoti á aplikacijos direktorijà ir paleisti node server
+
+	Jeigu viskas gerai, tai 3.6 þingsnio metu turëtø bûti þinutë shell/commandPromp: "proxy running", o 3.8: "prisijungta prie db" bei "prisijunges prie port'o: (port'o numeris)"

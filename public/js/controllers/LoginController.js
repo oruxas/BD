@@ -13,11 +13,8 @@
       authentication
         .login(vm.credentials)
         .error(function(err){
-          alert(JSON.stringify(err));
         })
         .then(function(){
-          alert(JSON.stringify('Login Controller ' + vm.credentials));
-         // $rootScope.$broadcast('userLoggedIn');
         
           $location.path('profile');
            $window.location.reload();

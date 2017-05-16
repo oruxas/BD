@@ -1,44 +1,4 @@
-<!--<div class="container-fluid">
-   <ul ng-model="workoutPlans" style="display: inline">
-                <li ng-repeat="workoutPlan in workoutPlans | orderBy:'-upvotes'" > 
 
-                    <uib-accordion close-others="oneAtATime">
-                        <div uib-accordion-group class="accordionHeading" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                        <uib-accordion-heading >
-                                <div class="row accordionWidth">
-                                    <div class="col-md-2">
-                                        <div id="star" ng-click="addUpvote($event, workoutPlan)"><i class="fa fa-star" ></i> {{workoutPlan.upvotes}}</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="planTitle">{{ workoutPlan.workoutPlanTitle }}</div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button class=" btn btn-xs downloadPdf" ng-click="downloadPdf($event, workoutPlan._id)">  PDF!</button>
-                                        <button class=" btn btn-xs downloadPdf" ng-click="delete($event, workoutPlan)"> Trinti</button>
-                                    </div>   
-                                </div>
-                           
-                    
-                        </uib-accordion-heading>
-                        <div class="accordionBody">
-                            <p> "Jūsų sporto plano pavadinimas: " " {{workoutPlan.workoutPlanTitle}} " </p> <br />
-                            <p> "Jūsų sporto plano trukmė: " {{workoutPlan.totalDuration}} </p> <br />
-                            <p> "Užsiėmimų skaičius per savaitę: " {{workoutPlan.daysPerWeek}} </p> <br />
-                            <p> "Pasirinkta treniruot kūno dalis: " {{workoutPlan.bodyPart}} </p> <br />  
-                            <p> "Pasirinkti pratimai: " {{workoutPlan.selectedExercises}} </p> <br /> 
-                            <p> "Pasirinkti setai: "{{workoutPlan.sets}} </p> <br /> 
-                            <p> "Pasirinkti pakartojimai: " {{workoutPlan.reps}} </p> <br />
-                            <p> "Pasirinktas poilsio laikas: " {{workoutPlan.restTime}} </p> <br />
-                            <p> "Sukurta: " {{workoutPlan.userName}} </p> <br />
-                            <p> "Kontaktai: " {{workoutPlan.userEmail}} </p>  
-                        </div>
-                    
-                        </div>  
-                    </uib-accordion>
-
-                </li>
-            </ul>
-</div>-->
 
 <!--NEW Verson-->
 <div class="container">

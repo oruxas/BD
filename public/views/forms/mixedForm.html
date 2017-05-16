@@ -17,7 +17,6 @@
     </div>
 
     <div class="form-group row">    
-            <!--TODO: add date picker which disables not selected days and sets them as rest days-->
             <label class="control-label customLabel col-md-4">Select days to train: </label>
             <div class="col-md-4">
               <input type="number" ng-maxlength="7" class="form-control" ng-model="workoutPlan.trainDays" /><br />
@@ -35,7 +34,6 @@
               multiple="true"
               ng-options=" bodyPart for bodyPart in bodyPartTags"
               ng-change="bodyPartsChanged(selected)"> <!--workoutPlan.bodyPart-->
-              <!-- TODO: push selected body parts in array and look for matches. -->
               </select>
 
               <br />
@@ -44,7 +42,6 @@
     </div>
 
     <div class="form-group row">        
-            <!--TODO: add list with available exercises + add exercise functionality -->
             <label class="control-label customLabel col-md-4">Select Exercises: </label>
             <div class="col-md-4">
              <!-- <div class="input-group">-->
@@ -53,13 +50,9 @@
                   multiple="false"
                   ng-options="item.selectedExercises.title for item in mixedExercises"
                    ng-change="exerciseChanged(item.selectedExercises.title)">
-                  <!--<option ng-repeat="item in exercises"ng-model="item.selectedExercises.title"
-                   ng-change="exerciseChanged(item.selectedExercises.title)" selected>
-                   {{item.selectedExercises.title}}
-                   </option>-->
                 </select>
                
-                 <a href="/createExercise" class=" addExerciseBtn"> ADD YOUR EXERCISE</a><br />
+                 <!--<a href="/createExercise" class=" addExerciseBtn"> ADD YOUR EXERCISE</a><br />-->
                
               <!--</div>-->  
             </div>

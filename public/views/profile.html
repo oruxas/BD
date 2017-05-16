@@ -1,25 +1,26 @@
 <div class="container">
   <div class="row">
     
-     <div class="col-md-6">
+       <div class="col-md-12">
+    
+        <h1 class="form-signin-heading" style="margin-left: 20px;">Profilis</h1>
 
-      <h1 class="form-signin-heading">Your profile</h1>
+        <form  class="form-horizontal">
+            <div class="form-group">
+            <label class="col-sm-1 control-label">Vardas</label>
+            <p class="form-control-static">{{ vm.user.name }}</p>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-1 control-label">paštas</label>
+            <p class="form-control-static">{{ vm.user.email }}</p>
+            </div>
 
-      <form  class="form-horizontal">
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Full name</label>
-          <p class="form-control-static">{{ vm.user.name }}</p>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Email</label>
-          <p class="form-control-static">{{ vm.user.email }}</p>
-        </div>
-
-        <div class="form-group">
-            
-             <a href="/logout" ng-click="pageReload()">Logout</a>
-        </div>
-      </form>
+            <div class="form-group">
+                
+               <button class="btn btn-warning" style="margin-left: 40px;"> <a href="/logout" ng-click="pageReload()" style="color: white">Logout</a> </button>
+            </div>
+        </form>
+    </div>
 
       <ul ng-model="userPlans">
         <li ng-repeat="userPlan in vm.userPlans | orderBy:'-upvotes'"> 
@@ -47,8 +48,10 @@
         </li>
     </ul>
 
-    <div ng-show="vm.showMessage">
-      <p>Šis vartotojas planų neturi</p>
+    <div class="row" ng-show="vm.showMessage">
+      <div class="col-md-12">
+        <p style="margin-left: 40px;">Šis vartotojas planų neturi</p>
+      </div>        
     </div>
 
     </div>

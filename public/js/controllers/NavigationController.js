@@ -3,20 +3,12 @@ angular.module('NavigationController', [])
               function($scope, $location, authentication){
     var vm = this;
     
-    
-
-    
-    //alert(vm.currentUser);
-  
     vm.currentUser = authentication.currentUser();
-     alert(JSON.stringify(vm.currentUser));
      vm.isLoggedIn = authentication.isLoggedIn();
   
-  
-    //alert(vm.isLoggedIn);
      if(angular.isDefined(vm.currentUser)){
        if(vm.currentUser.role =="admin"){
-        $location.path('/admin');
+        //$location.path('/admin');
       } else if(vm.currentUser.role == "guest" && vm.isLoggedIn){
         $location.path('profile');
       } else {

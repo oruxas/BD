@@ -19,6 +19,10 @@ ul {
     list-style: none;
 }
 
+p{
+    color: #cccccc;
+}
+
 a:hover{
     text-decoration: none;
 }
@@ -97,9 +101,9 @@ label {
 #bodyweightHeaderText{
   margin-top: 8vh; 
 }
-#weightsHeaderText{
-    /*margin-top: -4vh;*/
-}
+/*#weightsHeaderText{
+    margin-top: -4vh;
+}*/
 .subHeaderText{
     color: #ffffff;
     font-family: 'roboto';

@@ -34,6 +34,7 @@ angular.module('WorkoutPlansFactory', [])
                     });
                 }, //TODO:complete
                 update : function(workoutPlanData){
+                    alert(JSON.stringify(workoutPlanData._id));
                     return $http({
                         method : 'POST',
                         url : '/api/workoutPlans/:'+workoutPlanData._id,
@@ -49,7 +50,7 @@ angular.module('WorkoutPlansFactory', [])
 
                 //Call to DELETE workout plan
                 delete : function(workoutPlanData){
-                    alert(workoutPlanData);
+                    //alert(workoutPlanData);
                     return $http({
                         method: 'DELETE',
                         url: '/api/workoutPlans/' + workoutPlanData._id,

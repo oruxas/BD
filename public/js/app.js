@@ -20,5 +20,11 @@ angular.module('workoutPlansApp', ['ngRoute', 'appRoutes', 'MainController',
                 alert('You are not an ADMIN');
                 $location.path('/');
             }
+
+            if ($location.path() === '/profile' && authentication.isLoggedIn() && authentication.isAdmin()) {
+                //alert('error, redirecting');
+                $location.path('/admin');
+            }
+
         });
     });

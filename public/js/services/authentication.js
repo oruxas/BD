@@ -32,7 +32,7 @@ angular.module('authentication',[])
           payload = token.split('.')[1];
           payload = $window.atob(payload);
           payload = JSON.parse(payload);
-          //console.log(payload);
+          console.log(payload);
           if(payload.role=="admin"){
             return true; 
           } else {

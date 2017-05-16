@@ -2,7 +2,6 @@
 
 //get mongoose module
 var mongoose = require('mongoose');
-//define our models
 
 //Schema definition:
 var Schema = mongoose.Schema;

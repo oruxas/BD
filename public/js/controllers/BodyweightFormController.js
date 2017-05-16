@@ -23,24 +23,23 @@ angular.module('BodyweightFormController', [])
                      }
                        
                  });
-                //alert(JSON.stringify($scope.exercises));
                 $scope.bodyweightExercises = bodyweightExercises;
               return  $scope.bodyweightExercises;
             } //end getWeightsExercises
             getBodyweightExercises("bodyweight");
 
-            //get body parts tag which will be selectable for further filtering
+           
             $scope.bodyPartTags = TagsFactory.getBodyPartTags();
 
             $scope.tagType = "bodyweight";
             //$scope.bodyweightExercises = TagsFactory.getBodyweightExercises($scope.tagType);
             console.log($scope.bodyweightExercises);
             //define bodyParts array
-             $scope.selectedBodyParts = [];
+            $scope.selectedBodyParts = [];
       
               //to filter existin exercises
             $scope.bodyPartsChanged = function(bodyPartsArr){
-                alert(bodyPartsArr);
+                //alert(bodyPartsArr);
                 $scope.selectedBodyParts = bodyPartsArr;
                 partsString =  $scope.selectedBodyParts.toString();
                 //console.log(partsString);
@@ -48,9 +47,10 @@ angular.module('BodyweightFormController', [])
                 $scope.bodyweightExercises = TagsFactory.getBodyweightExercisesByBodyPart( $scope.selectedBodyParts);
             }        
 
-                $scope.selectedExercises = [];
-                $scope.save = function(workoutPlan, exerciseTitleObj){
-                    //alert(JSON.stringify($scope.selectedBodyParts));
+            $scope.selectedExercises = [];
+
+            $scope.save = function(workoutPlan, exerciseTitleObj){
+               
                     var bodyPartsString = $scope.selectedBodyParts.toString();    
                     for(var i = 0; i < exerciseTitleObj.length; i++){
                          $scope.selectedExercises.push(exerciseTitleObj[i].selectedExercises.title)
@@ -59,10 +59,8 @@ angular.module('BodyweightFormController', [])
                     var selectedExercisesString = $scope.selectedExercises.toString();
                     $scope.user = PassUserInfo.getUserInfo()
 
-                    //TODO change to array
                     workoutPlan.exerciseTitle = selectedExercisesString;
                     workoutPlan.bodyPart = bodyPartsString;
-                    // workoutPlan.exerciseTitle = exerciseTitleObj.selectedExercises.title;
                         if(angular.isDefined($scope.user)){
                             workoutPlan.userName = $scope.user.name;
                             workoutPlan.userEmail = $scope.user.email;     
@@ -70,13 +68,6 @@ angular.module('BodyweightFormController', [])
                             workoutPlan.userName = "guest";
                             workoutPlan.userEmail = "guest";
                         }
-                       
-
-                    //alert(JSON.stringify(workoutPlan));
                     WorkoutPlansFactory.create(workoutPlan);
                 }
-
-                
-
-              //  $scope.reset();
-        }])//comparing arrays;
+}])//comparing arrays;

@@ -1,1 +1,178 @@
-<h1>This is admin view</h1>
+
+    <div class="col-md-12">
+    
+        <h1 class="form-signin-heading" style="margin-left: 20px">Profilis</h1>
+
+        <form  class="form-horizontal">
+            <div class="form-group">
+            <label class="col-sm-1 control-label">Vardas</label>
+            <p class="form-control-static">{{ vm.user.name }}</p>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-1 control-label">paštas</label>
+            <p class="form-control-static">{{ vm.user.email }}</p>
+            </div>
+
+            <div class="form-group">
+                
+               <button class="btn btn-warning" style="margin-left: 40px;"> <a href="/logout" ng-click="pageReload()" style="color: white">Logout</a> </button>
+            </div>
+        </form>
+    </div>
+
+
+<div class='row'>
+    <div class="col-md-6">
+        <ul ng-model="userPlans">
+            <li ng-repeat="userPlan in userPlansList | orderBy:'-upvotes'"> 
+
+                <uib-accordion close-others="oneAtATime">
+                    <div uib-accordion-group class="panel-primary" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    <uib-accordion-heading>
+                            <div class="pull-right" style='color: yellow'> <span><i class="fa fa-star"></i></span> {{userPlan.upvotes}}</div>
+                            <div>{{ userPlan.workoutPlanTitle }}</div>
+                             <!--<button class=" btn btn-warning btn-small center-block" ng-click="delete($event, workoutPlan)"> Trinti</button>-->
+                    </uib-accordion-heading>
+                    
+                    <p> "Jūsų sporto plano pavadinimas: " " {{userPlan.workoutPlanTitle}} " </p> <br />
+                    <p> "Jūsų sporto plano trukmė: " {{userPlan.totalDuration}} </p> <br />
+                    <p> "Užsiėmimų skaičius per savaitę: " {{userPlan.daysPerWeek}} </p> <br />
+                    <p> "Pasirinkta treniruot kūno dalis: " {{userPlan.bodyPart}} </p> <br />  <!--TODO: multiple body parts?-->
+                    <p> "Pasirinkti pratimai: " {{userPlan.selectedExercises}} </p> <br /> <!--TODO: array of exercises ng repeat?-->
+                    <p> "Pasirinkti setai: "{{userPlan.sets}} </p> <br /> 
+                    <p> "Pasirinkti pakartojimai: " {{userPlan.reps}} </p> <br />
+                    <p> "Pasirinktas poilsio laikas: " {{userPlan.restTime}} </p> <br />
+                    <p> "Sukurta: " {{userPlan.userName}} </p> <br />
+                    <p> "Kontaktai: " {{userPlan.userEmail}} </p>  
+                    </div>  
+                </uib-accordion>
+
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Select plan to edit:</label>
+            </div>
+            <div class="col-md-6">
+                <select
+                ng-model="selectedPlan"
+                ng-change="planChanged(selectedPlan)"
+                ng-options="userPlan.workoutPlanTitle for userPlan in userPlansList"
+                ></select>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                
+                    
+                <form novalidate class="form-group form-horizontal">
+                    
+                    <div class="form-group row">
+                        <label class="control-label customLabel col-md-4">Workout Plan Title: </label>
+                        <div class="col-md-4">
+                        <input type="text" class="form-control" ng-model="workoutPlan.workoutPlanTitle" /><br />
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="form-group row">
+                            <label class="control-label customLabel col-md-4">Total workout length: </label> 
+                            <div class="col-md-4">
+                            <input type="number" class="form-control" ng-model="workoutPlan.totalDuration" /><br />
+                            </div>
+                            <div class="col-md-4"></div>  
+                    </div>
+
+                    <div class="form-group row">    
+                            <label class="control-label customLabel col-md-4">Select days to train: </label>
+                            <div class="col-md-4">
+                            <input type="number" ng-maxlength="7" class="form-control" ng-model="workoutPlan.daysPerWeek" /><br />
+                            </div>
+                            <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="form-group row">       
+                            
+                            <label class="control-label customLabel col-md-4">Select Body Part to train: </label>
+                            <div class="col-md-4">
+                            <!-- <input type="text" class="form-control" ng-model="workoutPlan.bodyPart" />-->
+                            <select class="form-control"
+                            ng-model="selected"
+                            multiple="true"
+                            ng-options=" bodyPart for bodyPart in bodyPartTags"
+                            ng-change="bodyPartsChanged(selected)"> <!--workoutPlan.bodyPart-->
+                           
+                            </select>
+
+                            <br />
+                            </div>
+                            <div class="col-md-4"></div>  
+                    </div>
+
+                    <div class="form-group row">        
+                           
+                            <label class="control-label customLabel col-md-4">Select Exercises: </label>
+                            <div class="col-md-4">
+                            <!-- <div class="input-group">-->
+                                <select  class="form-control" 
+                                ng-model="item.selectedExercises.title"
+                                multiple="false"
+                                ng-options="item.selectedExercises.title for item in weightsExercises"
+                                ng-change="exerciseChanged(item.selectedExercises.title)">
+                                </select>
+                                
+                            <a href="/createExercise" class=" addExerciseBtn"> ADD YOUR EXERCISE</a><br />
+                            
+                            <!--</div>-->  
+                            </div>
+                            <div class="col-md-4">
+                            
+                            </div>
+                    </div>
+
+                
+
+                    <!--END ADD YOUR EXERCISE-->    
+
+
+                    <div class="form-group row">  
+                            <label class="control-label customLabel col-md-4">Select number of sets: </label>
+                            <div class="col-md-4">
+                            <input type="number" class="form-control" ng-model="workoutPlan.sets" /><br />
+                            </div>
+                            <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="form-group row">
+                    <label class="control-label customLabel col-md-4">Select number of reps: </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" ng-model="workoutPlan.reps" /><br />
+                    </div>
+                    <div class="col-md-4"></div>  
+                </div>
+
+                    <div class="form-group row">
+                            <label class="control-label customLabel col-md-4">Select Rest time: </label>
+                            <div class="col-md-4">
+                            <input type="number" class="form-control" ng-model="workoutPlan.restTime" /><br />
+                            </div>
+                            <div class="col-md-4"></div>
+                    </div>
+                    <!--<input type="button" ng-click="reset()" value="Reset" />-->
+
+                <div class="form-group row">
+                            <button type="submit" value="Save" class="form-control btn customSaveButton"  ng-click="save(workoutPlan, item.selectedExercises.title)">Save</button>
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+        
+
+    </div>
+</div>
