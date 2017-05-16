@@ -21,4 +21,6 @@ MKDf-13/3 Evaldo Kalasuno Bakalaurinis darbas
 	3.7 Galima atsidaryti narðyklæ ir nuëjus á localhost:18070 turëtø raðyti, kad service unavailable
 	3.8 Reikia atsidaryti dar vienà shell/commandPrompt, naviguoti á aplikacijos direktorijà ir paleisti node server
 
+	3.8 þingsná galima kartoti tiek kartø, kiek norite paleisti serveriø
+
 	Jeigu viskas gerai, tai 3.6 þingsnio metu turëtø bûti þinutë shell/commandPromp: "proxy running", o 3.8: "prisijungta prie db" bei "prisijunges prie port'o: (port'o numeris)"
